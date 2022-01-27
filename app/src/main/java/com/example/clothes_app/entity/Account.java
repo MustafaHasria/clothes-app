@@ -20,34 +20,60 @@ public class Account {
     private String password;
 
     @ColumnInfo
+    private String picture;
+
+    @ColumnInfo
     private String email;
 
     @ColumnInfo
     private int mobile;
 
     @ColumnInfo
-    private String picture;
-
-    @ColumnInfo
     private String country;
 
     @ColumnInfo
     private boolean gender;
+
+    @ColumnInfo
+    private String goverment;
+
+    @ColumnInfo
+    private int accountTypeId;
     //endregion
 
     //region Constructor
-    public Account(String userName, String password, String email, int mobile, String picture, String country, boolean gender) {
+
+    public Account(String userName, String password, String picture, String email, int mobile, String country, boolean gender, String goverment, int accountTypeId) {
         this.userName = userName;
         this.password = password;
+        this.picture = picture;
         this.email = email;
         this.mobile = mobile;
-        this.picture = picture;
         this.country = country;
         this.gender = gender;
+        this.goverment = goverment;
+        this.accountTypeId = accountTypeId;
     }
+
     //endregion
 
     //region Setters & Getters
+
+    public String getGoverment() {
+        return goverment;
+    }
+
+    public void setGoverment(String goverment) {
+        this.goverment = goverment;
+    }
+
+    public int getAccountTypeId() {
+        return accountTypeId;
+    }
+
+    public void setAccountTypeId(int accountTypeId) {
+        this.accountTypeId = accountTypeId;
+    }
 
     public int getId() {
         return id;

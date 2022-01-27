@@ -1,15 +1,13 @@
 package com.example.clothes_app.entity;
 
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Gender_table")
-public class Gender {
+@Entity(tableName = "AccountTypeTable")
+public class AccountType {
 
     //region Variables
-
     @ColumnInfo
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -21,18 +19,17 @@ public class Gender {
 
     //region Constructor
 
-    public Gender(String name) {
+    public AccountType(String name) {
         this.name = name;
     }
 
-    //endregion
+    //end region
 
-    //region Setters & Getters
+    //region Setter & Getter
 
     public int getId() {
         return id;
     }
-
 
     public String getName() {
         return name;
@@ -41,9 +38,5 @@ public class Gender {
     public void setName(String name) {
         this.name = name;
     }
-
-
-    //endregion
-
-
+    //end region
 }

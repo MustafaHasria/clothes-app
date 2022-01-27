@@ -1,7 +1,5 @@
 package com.example.clothes_app.entity;
 
-import android.graphics.Color;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,6 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "Product_table")
 public class Product {
 
+    //region Variables
     @ColumnInfo
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -17,22 +16,13 @@ public class Product {
     private String name;
 
     @ColumnInfo
-    private float price;
+    private float priceDollar;
 
     @ColumnInfo
-    private int pictureId;
+    private String codeQR;
 
     @ColumnInfo
-    private int sizeId;
-
-    @ColumnInfo
-    private String codeQR;////?????
-
-    @ColumnInfo
-    private Color color;
-
-    @ColumnInfo
-    private boolean offer;
+    private boolean isOffered;
 
     @ColumnInfo
     private String description;
@@ -40,20 +30,39 @@ public class Product {
     @ColumnInfo
     private String typeOfTissue;
 
-    //Constructor
-    public Product(String name, float price, int pictureId, int sizeId, String codeQR, Color color, boolean offer, String description, String typeOfTissue) {
+    @ColumnInfo
+    private String collectionSeason;
+
+    @ColumnInfo
+    private int idColorProduct;
+
+    @ColumnInfo
+    private int idSizeProduct;
+
+    @ColumnInfo
+    private int idCategoryProduct;
+
+    //endregion
+
+
+    //region Constructor
+
+    public Product(String name, float priceDollar, String codeQR, boolean isOffered, String description, String typeOfTissue, String collectionSeason, int idColorProduct, int idSizeProduct, int idCategoryProduct) {
         this.name = name;
-        this.price = price;
-        this.pictureId = pictureId;
-        this.sizeId = sizeId;
+        this.priceDollar = priceDollar;
         this.codeQR = codeQR;
-        this.color = color;
-        this.offer = offer;
+        this.isOffered = isOffered;
         this.description = description;
         this.typeOfTissue = typeOfTissue;
+        this.collectionSeason = collectionSeason;
+        this.idColorProduct = idColorProduct;
+        this.idSizeProduct = idSizeProduct;
+        this.idCategoryProduct = idCategoryProduct;
     }
 
-    //Setter
+    //endregion
+
+    //region Setter & Getters
 
     public int getId() {
         return id;
@@ -67,31 +76,13 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
-        return price;
+    public float getPriceDollar() {
+        return priceDollar;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPriceDollar(float priceDollar) {
+        this.priceDollar = priceDollar;
     }
-
-    public int getPictureId() {
-        return pictureId;
-    }
-
-    public void setPictureId(int pictureId) {
-        this.pictureId = pictureId;
-    }
-
-    public int getSizeId() {
-        return sizeId;
-    }
-
-    public void setSizeId(int sizeId) {
-        this.sizeId = sizeId;
-    }
-
-    //Getter
 
     public String getCodeQR() {
         return codeQR;
@@ -101,20 +92,12 @@ public class Product {
         this.codeQR = codeQR;
     }
 
-    public Color getColor() {
-        return color;
+    public boolean isOffered() {
+        return isOffered;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public boolean isOffer() {
-        return offer;
-    }
-
-    public void setOffer(boolean offer) {
-        this.offer = offer;
+    public void setOffered(boolean offered) {
+        isOffered = offered;
     }
 
     public String getDescription() {
@@ -132,4 +115,39 @@ public class Product {
     public void setTypeOfTissue(String typeOfTissue) {
         this.typeOfTissue = typeOfTissue;
     }
+
+    public String getCollectionSeason() {
+        return collectionSeason;
+    }
+
+    public void setCollectionSeason(String collectionSeason) {
+        this.collectionSeason = collectionSeason;
+    }
+
+    public int getIdColorProduct() {
+        return idColorProduct;
+    }
+
+    public void setIdColorProduct(int idColorProduct) {
+        this.idColorProduct = idColorProduct;
+    }
+
+    public int getIdSizeProduct() {
+        return idSizeProduct;
+    }
+
+    public void setIdSizeProduct(int idSizeProduct) {
+        this.idSizeProduct = idSizeProduct;
+    }
+
+    public int getIdCategoryProduct() {
+        return idCategoryProduct;
+    }
+
+    public void setIdCategoryProduct(int idCategoryProduct) {
+        this.idCategoryProduct = idCategoryProduct;
+    }
+
+
+    //endregion
 }

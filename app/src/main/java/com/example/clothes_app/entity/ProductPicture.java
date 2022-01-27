@@ -6,14 +6,16 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Product_Pictures_table")
+@Entity(tableName = "ProductPictureTable")
 public class ProductPicture {
 
+    //region Variables
     @ColumnInfo
     @PrimaryKey(autoGenerate = true)
-
     private int id;
-    //private  ?? picture;
+
+    @ColumnInfo
+    private String picture;
 
     @ColumnInfo
     private int productId;
@@ -21,23 +23,36 @@ public class ProductPicture {
     @ColumnInfo
     private Color color;
 
-    //Constructor
-    public ProductPicture(int productId, Color color) {
+    //endregion
+
+
+    //region Constructor
+
+    public ProductPicture(String picture, int productId, Color color) {
+        this.picture = picture;
         this.productId = productId;
         this.color = color;
     }
 
-    //Setter
+    //endregion
+
+    //region Setter & Getters
 
     public int getId() {
         return id;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public int getProductId() {
         return productId;
     }
-
-    //Getter
 
     public void setProductId(int productId) {
         this.productId = productId;
@@ -50,4 +65,6 @@ public class ProductPicture {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    //endregion
 }
