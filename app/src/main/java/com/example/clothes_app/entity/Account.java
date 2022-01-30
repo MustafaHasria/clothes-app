@@ -13,8 +13,8 @@ public class Account {
     private int id;
 
     //image
-    @ColumnInfo(name = "user_name")
-    private String userName;
+    @ColumnInfo(name = "username")
+    private String username;
 
     @ColumnInfo(name = "password")
     private String password;
@@ -34,8 +34,8 @@ public class Account {
     @ColumnInfo(name = "gender")
     private boolean gender;
 
-    @ColumnInfo(name = "goverment")
-    private String goverment;
+    @ColumnInfo(name = "government")
+    private String government;
 
     @ColumnInfo(name = "id_account_type")
     private int idAccountType;
@@ -43,15 +43,15 @@ public class Account {
 
     //region Constructor
 
-    public Account(String userName, String password, String picture, String email, int mobile, String country, boolean gender, String goverment, int accountTypeId) {
-        this.userName = userName;
+    public Account(String username, String password, String picture, String email, int mobile, String country, boolean gender, String government, int accountTypeId) {
+        this.username = username;
         this.password = password;
         this.picture = picture;
         this.email = email;
         this.mobile = mobile;
         this.country = country;
         this.gender = gender;
-        this.goverment = goverment;
+        this.government = government;
         this.idAccountType = accountTypeId;
     }
 
@@ -59,12 +59,16 @@ public class Account {
 
     //region Setters & Getters
 
-    public String getGoverment() {
-        return goverment;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setGoverment(String goverment) {
-        this.goverment = goverment;
+    public String getGovernment() {
+        return government;
+    }
+
+    public void setGovernment(String government) {
+        this.government = government;
     }
 
     public int getIdAccountType() {
@@ -79,12 +83,12 @@ public class Account {
         return id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
