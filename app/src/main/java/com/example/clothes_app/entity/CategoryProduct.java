@@ -4,18 +4,18 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "CategoryProduct")
+@Entity(tableName = "category_product")
 public class CategoryProduct {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_product")
     private int idProduct;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_category")
     private int idCategory;
 
     //endregion

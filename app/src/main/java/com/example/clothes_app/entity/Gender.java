@@ -5,16 +5,16 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Gender_table")
+@Entity(tableName = "gender_table")
 public class Gender {
 
     //region Variables
 
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "name")
     private String name;
 
     //endregion

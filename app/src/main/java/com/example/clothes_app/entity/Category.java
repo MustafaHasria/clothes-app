@@ -4,31 +4,31 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Category_table")
+@Entity(tableName = "category_table")
 public class Category {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "picture")
     private String picture;
 
-    @ColumnInfo
+    @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo
-    private int fatherId;
+    @ColumnInfo(name = "id_father")
+    private int idFather;
 
     //endregion
 
     //region Constructor
 
-    public Category(String picture, String name, int fatherId) {
+    public Category(String picture, String name, int idFather) {
         this.picture = picture;
         this.name = name;
-        this.fatherId = fatherId;
+        this.idFather = idFather;
     }
 
     //endregion
@@ -55,12 +55,12 @@ public class Category {
         this.name = name;
     }
 
-    public int getFatherId() {
-        return fatherId;
+    public int getIdFather() {
+        return idFather;
     }
 
-    public void setFatherId(int fatherId) {
-        this.fatherId = fatherId;
+    public void setIdFather(int idFather) {
+        this.idFather = idFather;
     }
 
     //endregion

@@ -4,27 +4,27 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Size_table")
+@Entity(tableName = "size_table")
 public class Size {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo
-    private int gender_id;
+    @ColumnInfo(name = "id_gender")
+    private int idGender;
 
     //endregion
 
     //region Constructor
 
-    public Size(String name, int gender_id) {
+    public Size(String name, int idGender) {
         this.name = name;
-        this.gender_id = gender_id;
+        this.idGender = idGender;
     }
 
     //endregion
@@ -43,12 +43,12 @@ public class Size {
         this.name = name;
     }
 
-    public int getGender_id() {
-        return gender_id;
+    public int getIdGender() {
+        return idGender;
     }
 
-    public void setGender_id(int gender_id) {
-        this.gender_id = gender_id;
+    public void setIdGender(int idGender) {
+        this.idGender = idGender;
     }
 
 

@@ -5,21 +5,21 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "TissueProductTable")
+@Entity(tableName = "tissue_product_table")
 public class TissueProduct {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_product")
     private int idProduct;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_tissue")
     private int idTissue;
 
-    @ColumnInfo
+    @ColumnInfo(name = "percentage")
     private float percentage;
 
     //endregion

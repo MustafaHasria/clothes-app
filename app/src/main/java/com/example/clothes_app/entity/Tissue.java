@@ -4,19 +4,19 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "TissueTable")
+@Entity(tableName = "tissue_table")
 public class Tissue {
 
     //region Variables
 
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo
+    @ColumnInfo(name = "made_of")
     private String madeOf;
 
     //endregion

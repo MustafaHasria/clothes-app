@@ -4,41 +4,41 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Account_table")
+@Entity(tableName = "account_table")
 public class Account {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     //image
-    @ColumnInfo
+    @ColumnInfo(name = "user_name")
     private String userName;
 
-    @ColumnInfo
+    @ColumnInfo(name = "password")
     private String password;
 
-    @ColumnInfo
+    @ColumnInfo(name = "picture")
     private String picture;
 
-    @ColumnInfo
+    @ColumnInfo(name = "email")
     private String email;
 
-    @ColumnInfo
+    @ColumnInfo(name = "mobile")
     private int mobile;
 
-    @ColumnInfo
+    @ColumnInfo(name = "country")
     private String country;
 
-    @ColumnInfo
+    @ColumnInfo(name = "gender")
     private boolean gender;
 
-    @ColumnInfo
+    @ColumnInfo(name = "goverment")
     private String goverment;
 
-    @ColumnInfo
-    private int accountTypeId;
+    @ColumnInfo(name = "id_account_type")
+    private int idAccountType;
     //endregion
 
     //region Constructor
@@ -52,7 +52,7 @@ public class Account {
         this.country = country;
         this.gender = gender;
         this.goverment = goverment;
-        this.accountTypeId = accountTypeId;
+        this.idAccountType = accountTypeId;
     }
 
     //endregion
@@ -67,12 +67,12 @@ public class Account {
         this.goverment = goverment;
     }
 
-    public int getAccountTypeId() {
-        return accountTypeId;
+    public int getIdAccountType() {
+        return idAccountType;
     }
 
-    public void setAccountTypeId(int accountTypeId) {
-        this.accountTypeId = accountTypeId;
+    public void setIdAccountType(int idAccountType) {
+        this.idAccountType = idAccountType;
     }
 
     public int getId() {

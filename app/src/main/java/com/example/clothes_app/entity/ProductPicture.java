@@ -6,21 +6,21 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "ProductPictureTable")
+@Entity(tableName = "product_picture_table")
 public class ProductPicture {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "picture")
     private String picture;
 
-    @ColumnInfo
+    @ColumnInfo(name = "product_id")
     private int productId;
 
-    @ColumnInfo
+    @ColumnInfo(name = "color")
     private Color color;
 
     //endregion

@@ -6,24 +6,24 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "OrderTable")
+@Entity(tableName = "order_table")
 public class Order {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "date")
     private Date date;
 
-    @ColumnInfo
+    @ColumnInfo(name = "sale")
     private float sale;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_customer")
     private int idCustomer;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_repo")
     private int idRepo;
 
     //endregion

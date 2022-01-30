@@ -4,42 +4,42 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Product_table")
+@Entity(tableName = "product_table")
 public class Product {
 
     //region Variables
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo
+    @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo
+    @ColumnInfo(name = "price_dollar")
     private float priceDollar;
 
-    @ColumnInfo
+    @ColumnInfo(name = "code_qr")
     private String codeQR;
 
-    @ColumnInfo
+    @ColumnInfo(name = "is_offered")
     private boolean isOffered;
 
-    @ColumnInfo
+    @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo
+    @ColumnInfo(name = "type_of_tissue")
     private String typeOfTissue;
 
-    @ColumnInfo
+    @ColumnInfo(name = "collection_season")
     private String collectionSeason;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_color_product")
     private int idColorProduct;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_size_product")
     private int idSizeProduct;
 
-    @ColumnInfo
+    @ColumnInfo(name = "id_category_product")
     private int idCategoryProduct;
 
     //endregion
