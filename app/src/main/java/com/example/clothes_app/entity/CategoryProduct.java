@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "category_product")
+@Entity(tableName = "category_product_table")
 public class CategoryProduct {
 
     //region Variables
@@ -30,6 +30,10 @@ public class CategoryProduct {
     //endregion
 
     //region Setter & Getter
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;

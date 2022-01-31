@@ -26,7 +26,7 @@ public class Account {
     private String email;
 
     @ColumnInfo(name = "mobile")
-    private int mobile;
+    private String mobile;
 
     @ColumnInfo(name = "country")
     private String country;
@@ -43,7 +43,8 @@ public class Account {
 
     //region Constructor
 
-    public Account(String username, String password, String picture, String email, int mobile, String country, boolean gender, String government, int accountTypeId) {
+    public Account(int id, String username, String password, String picture, String email, String mobile, String country, boolean gender, String government, int idAccountType) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.picture = picture;
@@ -52,8 +53,9 @@ public class Account {
         this.country = country;
         this.gender = gender;
         this.government = government;
-        this.idAccountType = accountTypeId;
+        this.idAccountType = idAccountType;
     }
+
 
     //endregion
 
@@ -107,11 +109,11 @@ public class Account {
         this.email = email;
     }
 
-    public int getMobile() {
+    public String getMobile() {
         return mobile;
     }
 
-    public void setMobile(int mobile) {
+    public void setMobile(String mobile) {
         this.mobile = mobile;
     }
 

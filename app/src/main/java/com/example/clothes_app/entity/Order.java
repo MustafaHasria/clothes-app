@@ -39,10 +39,13 @@ public class Order {
 
     //endregion
 
-    //region Setter & Getter
-
     public int getId() {
         return id;
+    }
+
+    //region Setter & Getter
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {

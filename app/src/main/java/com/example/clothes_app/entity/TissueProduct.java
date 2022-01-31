@@ -41,6 +41,10 @@ public class TissueProduct {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getIdProduct() {
         return idProduct;
     }

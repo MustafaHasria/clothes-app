@@ -37,6 +37,10 @@ public class SizeProduct {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getIdSize() {
         return idSize;
     }

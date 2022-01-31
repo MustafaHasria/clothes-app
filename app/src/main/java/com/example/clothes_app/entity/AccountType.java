@@ -20,16 +20,20 @@ public class AccountType {
 
     //region Constructor
 
-    public AccountType(String name) {
+    public AccountType(int id, String name) {
+        this.id = id;
         this.name = name;
     }
-
-    //end region
+//end region
 
     //region Setter & Getter
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
