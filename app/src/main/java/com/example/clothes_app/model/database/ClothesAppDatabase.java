@@ -113,7 +113,7 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
     public abstract TissueProductDao tissueProductDao();
     //endregion
 
-    //class for AsynTask
+    //class for AsyncTask
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private AccountTypeDao accountTypeDao;
         private AccountDao accountDao;
@@ -128,10 +128,9 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids) {
 
-            accountTypeDao.insert(new AccountType(0, "Admin"));
+            accountTypeDao.insert(new AccountType("Admin"));
 
             accountDao.insert(new Account(
-                    0,
                     "admin_boss",
                     "adminboss",
                     "",

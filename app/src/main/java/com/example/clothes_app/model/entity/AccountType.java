@@ -20,8 +20,7 @@ public class AccountType {
 
     //region Constructor
 
-    public AccountType(int id, String name) {
-        this.id = id;
+    public AccountType(String name) {
         this.name = name;
     }
 //end region

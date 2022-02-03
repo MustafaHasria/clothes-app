@@ -1,4 +1,4 @@
-package com.example.clothes_app.view;
+package com.example.clothes_app.view.main;
 
 import android.os.Bundle;
 
