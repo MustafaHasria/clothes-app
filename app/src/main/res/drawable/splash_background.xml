@@ -3,9 +3,7 @@
 
     <item android:drawable="@color/white" />
     <item>
-
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/bg_splash" />
+        <bitmap android:gravity="center"
+            android:src="@drawable/ic_checkroom"/>
     </item>
 </layer-list>

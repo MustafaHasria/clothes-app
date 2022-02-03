@@ -11,8 +11,9 @@
         android:theme="@style/Theme.Clothesapp">
 
         <activity
-            android:name=".SplashScreen"
-            android:exported="true"
+            android:name=".view.SplashScreen"
+                android:exported="true"
+            android:screenOrientation="landscape"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,18 +23,11 @@
 
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+            android:name=".view.LoginActivity"
+            android:screenOrientation="landscape" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
+            android:name=".view.MainActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
