@@ -134,7 +134,7 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
                     "admin_boss",
                     "adminboss",
                     "",
-                    "",
+                    "hello i am mustafa",
                     "",
                     "",
                     false,

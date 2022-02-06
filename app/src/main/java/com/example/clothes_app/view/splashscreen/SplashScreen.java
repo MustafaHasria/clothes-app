@@ -5,14 +5,14 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.clothes_app.view.main.MainActivity;
+import com.example.clothes_app.view.account.AccountActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+        Intent intent = new Intent(SplashScreen.this, AccountActivity.class);
         startActivity(intent);
         finish();
 

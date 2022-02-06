@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clothesapp">
         <activity
-            android:name=".view.account.AccountActivity"
+            android:name=".view.addaccount.AddAccountActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.account.AccountActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.splashscreen.SplashScreen"
             android:exported="true"

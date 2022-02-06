@@ -37,13 +37,20 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
 
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
-
+        holder.accountItemTextViewTitle.setText(accountList.get(position).getEmail());
+        holder.accountItemTextViewDescription.setText(accountList.get(position).getPassword());
     }
 
     @Override
     public int getItemCount() {
         return accountList.size();
     }
+
+    public void updateData(List<Account> accountList){
+        this.accountList = accountList;
+        notifyDataSetChanged();
+    }
+
     //endregion
 
     //region ViewHolder

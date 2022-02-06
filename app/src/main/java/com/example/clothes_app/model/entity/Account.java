@@ -34,9 +34,6 @@ public class Account {
     @ColumnInfo(name = "gender")
     private boolean gender;
 
-    @ColumnInfo(name = "government")
-    private String government;
-
     @ColumnInfo(name = "id_account_type")
     private int idAccountType;
     //endregion
@@ -51,7 +48,6 @@ public class Account {
         this.mobile = mobile;
         this.country = country;
         this.gender = gender;
-        this.government = government;
         this.idAccountType = idAccountType;
     }
 
@@ -62,14 +58,6 @@ public class Account {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getGovernment() {
-        return government;
-    }
-
-    public void setGovernment(String government) {
-        this.government = government;
     }
 
     public int getIdAccountType() {
