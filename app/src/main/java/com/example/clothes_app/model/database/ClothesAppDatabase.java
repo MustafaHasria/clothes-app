@@ -138,7 +138,6 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
                     "",
                     "",
                     false,
-                    "",
                     0));
             return null;
         }

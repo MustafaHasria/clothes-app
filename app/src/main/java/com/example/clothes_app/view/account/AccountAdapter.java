@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clothes_app.R;
@@ -14,19 +16,39 @@ import com.example.clothes_app.model.entity.Account;
 
 import java.util.List;
 
-public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountViewHolder>{
+public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountViewHolder> {
 
     //region Variables
     List<Account> accountList;
     //endregion
 
-    //region Constructor
-    public AccountAdapter(List<Account> accountList) {
-        this.accountList = accountList;
-    }
+    private static final DiffUtil.ItemCallback<Account> DIFF_CALLBACK = new DiffUtil.ItemCallback<Account>() {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull Account oldItem, @NonNull Account newItem) {
+            return oldItem == newItem;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Account oldItem, @NonNull Account newItem) {
+            return oldItem.getEmail().equals(newItem.getEmail()) && oldItem.isGender() == newItem.isGender()
+                    && oldItem.getIdAccountType() == newItem.getIdAccountType()
+                    && oldItem.getCountry().equals(newItem.getCountry())
+                    && oldItem.getMobile().equals(newItem.getMobile())
+                    && oldItem.getPicture().equals(newItem.getPicture())
+                    && oldItem.getUsername().equals(newItem.getUsername());
+        }
+    };
     //endregion
 
     //region Methods
+
+    //region Constructor
+    public AccountAdapter(List<Account> accountList) {
+        super(DIFF_CALLBACK);
+        this.accountList = accountList;
+    }
+
     @NonNull
     @Override
     public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,24 +59,17 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
 
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
-        holder.accountItemTextViewTitle.setText(accountList.get(position).getEmail());
-        holder.accountItemTextViewDescription.setText(accountList.get(position).getPassword());
+        Account currentAccount = getItem(position);
+
+        holder.accountItemTextViewTitle.setText(currentAccount.getEmail());
+        holder.accountItemTextViewDescription.setText(currentAccount.getPassword());
     }
 
-    @Override
-    public int getItemCount() {
-        return accountList.size();
-    }
-
-    public void updateData(List<Account> accountList){
-        this.accountList = accountList;
-        notifyDataSetChanged();
-    }
 
     //endregion
 
     //region ViewHolder
-    public class AccountViewHolder extends RecyclerView.ViewHolder{
+    public class AccountViewHolder extends RecyclerView.ViewHolder {
 
         //region Components
         CardView accountItemCardViewMainContainer;

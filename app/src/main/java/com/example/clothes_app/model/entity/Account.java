@@ -40,7 +40,7 @@ public class Account {
 
     //region Constructor
 
-    public Account(String username, String password, String picture, String email, String mobile, String country, boolean gender, String government, int idAccountType) {
+    public Account(String username, String password, String picture, String email, String mobile, String country, boolean gender, int idAccountType) {
         this.username = username;
         this.password = password;
         this.picture = picture;
