@@ -16,7 +16,11 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:src="@drawable/ic_arrow_back"
+            android:background="@drawable/border_edit_text"
+            android:backgroundTint="#FFC107"
+            android:padding="8dp"
             app:tint="@color/white" />
 
         <TextView
@@ -36,6 +40,7 @@
         android:background="@drawable/top_rounded_card"
         android:backgroundTint="@color/white"
         android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
         android:padding="16dp">
 
         <TextView
@@ -49,7 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:text="please full all the information in this section"/>
+
 
         <EditText
             android:id="@+id/fragment_add_account_edit_text_username"
@@ -57,8 +64,64 @@
             android:layout_height="45dp"
             android:background="@drawable/border_edit_text"
             android:drawableStart="@drawable/ic_person"
+            android:layout_marginBottom="16dp"
             android:drawablePadding="10dp"
             android:hint="Username"
+            android:inputType="text"
+            android:maxLines="1"
+            android:drawableTint="@color/grey_500"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/grey_500"
+            android:nextFocusForward="@+id/fragment_add_account_edit_text_password"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/fragment_add_account_edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border_edit_text"
+            android:drawableStart="@drawable/ic_key"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/grey_500"
+            android:hint="Password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:nextFocusForward="@+id/fragment_add_account_edit_text_confirm_password"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/grey_500"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/fragment_add_account_edit_text_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border_edit_text"
+            android:drawableStart="@drawable/ic_key"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/grey_500"
+            android:hint="Confirm Password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:nextFocusForward="@+id/fragment_add_account_edit_text_email"
+            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/grey_500"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/fragment_add_account_edit_text_email"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/border_edit_text"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/grey_500"
+            android:hint="Email"
             android:inputType="text"
             android:maxLines="1"
             android:nextFocusForward="@+id/registration_edit_text_email"
@@ -66,8 +129,6 @@
             android:textColor="@android:color/white"
             android:textColorHint="@color/grey_500"
             android:textSize="12sp" />
-
-
 
 
     </LinearLayout>
