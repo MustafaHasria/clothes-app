@@ -129,6 +129,8 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
 
             accountTypeDao.insert(new AccountType("Admin"));
+            accountTypeDao.insert(new AccountType("Customer"));
+            accountTypeDao.insert(new AccountType("Representative"));
 
             accountDao.insert(new Account(
                     "admin_boss",

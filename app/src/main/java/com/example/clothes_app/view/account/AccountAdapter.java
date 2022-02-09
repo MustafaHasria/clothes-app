@@ -22,6 +22,12 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
     List<Account> accountList;
     //endregion
 
+    //region Constructor
+    public AccountAdapter(List<Account> accountList) {
+        super(DIFF_CALLBACK);
+        this.accountList = accountList;
+    }
+
     private static final DiffUtil.ItemCallback<Account> DIFF_CALLBACK = new DiffUtil.ItemCallback<Account>() {
 
         @Override
@@ -39,15 +45,6 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                     && oldItem.getUsername().equals(newItem.getUsername());
         }
     };
-    //endregion
-
-    //region Methods
-
-    //region Constructor
-    public AccountAdapter(List<Account> accountList) {
-        super(DIFF_CALLBACK);
-        this.accountList = accountList;
-    }
 
     @NonNull
     @Override

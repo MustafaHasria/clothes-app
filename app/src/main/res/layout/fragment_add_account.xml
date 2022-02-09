@@ -8,130 +8,262 @@
     android:orientation="vertical"
     tools:context=".view.account.addaccount.AddAccountFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_arrow_back"
-            android:background="@drawable/border_edit_text"
-            android:backgroundTint="#FFC107"
-            android:padding="8dp"
-            app:tint="@color/white" />
-
-        <TextView
-            style="@style/TitleStyle"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingEnd="10dp"
-            android:text="Add Account" />
+            android:layout_height="match_parent"
+            android:background="@color/primary_color"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/fragment_add_account_image_view_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circular_background"
+                    android:backgroundTint="#FFC107"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/top_rounded_card"
-        android:backgroundTint="@color/white"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:padding="16dp">
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingEnd="10dp"
+                    android:text="@string/add_account" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create new account"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="please full all the information in this section"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/top_rounded_card"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_account"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/fragment_add_account_edit_text_username"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/border_edit_text"
-            android:drawableStart="@drawable/ic_person"
-            android:layout_marginBottom="16dp"
-            android:drawablePadding="10dp"
-            android:hint="Username"
-            android:inputType="text"
-            android:maxLines="1"
-            android:drawableTint="@color/grey_500"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/grey_500"
-            android:nextFocusForward="@+id/fragment_add_account_edit_text_password"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/fragment_add_account_edit_text_password"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/border_edit_text"
-            android:drawableStart="@drawable/ic_key"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/grey_500"
-            android:hint="Password"
-            android:inputType="text"
-            android:maxLines="1"
-            android:nextFocusForward="@+id/fragment_add_account_edit_text_confirm_password"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/grey_500"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/fragment_add_account_edit_text_confirm_password"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/border_edit_text"
-            android:drawableStart="@drawable/ic_key"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/grey_500"
-            android:hint="Confirm Password"
-            android:inputType="text"
-            android:maxLines="1"
-            android:nextFocusForward="@+id/fragment_add_account_edit_text_email"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/grey_500"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/fragment_add_account_edit_text_email"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/border_edit_text"
-            android:drawableStart="@drawable/ic_email"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/grey_500"
-            android:hint="Email"
-            android:inputType="text"
-            android:maxLines="1"
-            android:nextFocusForward="@+id/registration_edit_text_email"
-            android:padding="10dp"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/grey_500"
-            android:textSize="12sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/please_full_all_the_information_in_this_section" />
 
 
-    </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/fragment_add_account_circular_image"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:src="@color/primary_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/my_account_image_button_add_photo"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/circular_background"
+                        android:backgroundTint="@color/grey"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_add"
+                        app:layout_constraintBottom_toBottomOf="@id/fragment_add_account_circular_image"
+                        app:layout_constraintEnd_toEndOf="@id/fragment_add_account_circular_image"
+
+                        app:tint="@color/primary_color" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/fragment_add_account_edit_text_username"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/username"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_account_edit_text_email"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/fragment_add_account_edit_text_email"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_email"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_account_edit_text_password"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/fragment_add_account_edit_text_password"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_key"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_account_edit_text_confirm_password"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/fragment_add_account_edit_text_confirm_password"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_key"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_account_edit_text_address"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3">
+
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Male" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female" />
+
+                    </RadioGroup>
+
+                    <EditText
+                        android:id="@+id/fragment_add_account_edit_text_address"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_map"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/address"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_account_edit_text_password"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Representative" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Customer" />
+
+                    </RadioGroup>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 
 </LinearLayout>
