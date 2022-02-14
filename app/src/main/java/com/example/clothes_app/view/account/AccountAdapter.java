@@ -1,12 +1,13 @@
 package com.example.clothes_app.view.account;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,18 +17,12 @@ import com.example.clothes_app.model.entity.Account;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountViewHolder> {
 
     //region Variables
     List<Account> accountList;
-    //endregion
-
-    //region Constructor
-    public AccountAdapter(List<Account> accountList) {
-        super(DIFF_CALLBACK);
-        this.accountList = accountList;
-    }
-
     private static final DiffUtil.ItemCallback<Account> DIFF_CALLBACK = new DiffUtil.ItemCallback<Account>() {
 
         @Override
@@ -41,10 +36,19 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                     && oldItem.getIdAccountType() == newItem.getIdAccountType()
                     && oldItem.getCountry().equals(newItem.getCountry())
                     && oldItem.getMobile().equals(newItem.getMobile())
-                    && oldItem.getPicture().equals(newItem.getPicture())
+                    && oldItem.getPicture() == newItem.getPicture()
                     && oldItem.getUsername().equals(newItem.getUsername());
         }
     };
+    //endregion
+    OnAccountAdapterClickListeners onAccountAdapterClickListeners;
+
+    //region Constructor
+    public AccountAdapter(List<Account> accountList, OnAccountAdapterClickListeners onAccountAdapterClickListeners) {
+        super(DIFF_CALLBACK);
+        this.accountList = accountList;
+        this.onAccountAdapterClickListeners = onAccountAdapterClickListeners;
+    }
 
     @NonNull
     @Override
@@ -58,30 +62,57 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         Account currentAccount = getItem(position);
 
-        holder.accountItemTextViewTitle.setText(currentAccount.getEmail());
-        holder.accountItemTextViewDescription.setText(currentAccount.getPassword());
+        holder.accountItemTextViewEmail.setText(currentAccount.getEmail());
+        holder.accountItemTextViewUsername.setText(currentAccount.getUsername());
+        holder.accountItemTextViewAddress.setText(currentAccount.getCountry());
+        if (currentAccount.getPicture() != null)
+            holder.accountItemCircleImageViewImage.setImageBitmap(BitmapFactory
+                    .decodeByteArray(currentAccount.getPicture(), 0, currentAccount.getPicture().length));
+//        if (!currentAccount.isGender())
+//            holder.accountItemCardViewMainContainer.setBackgroundColor(Color.parseColor("#F7B4CC"));
     }
 
 
     //endregion
 
+    //region Click listeners
+    public interface OnAccountAdapterClickListeners {
+        void onAccountItemCardViewMainContainerClickListener(Account account, int position);
+    }
+    //endregion
+
     //region ViewHolder
-    public class AccountViewHolder extends RecyclerView.ViewHolder {
+    public class AccountViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //region Components
-        CardView accountItemCardViewMainContainer;
-        TextView accountItemTextViewTitle;
-        TextView accountItemTextViewDescription;
+        LinearLayout accountItemCardViewMainContainer;
+        TextView accountItemTextViewUsername;
+        TextView accountItemTextViewEmail;
+        TextView accountItemTextViewAddress;
+        CircleImageView accountItemCircleImageViewImage;
         //endregion
 
         //region Constructor
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
             accountItemCardViewMainContainer = itemView.findViewById(R.id.account_item_card_view_main_container);
-            accountItemTextViewTitle = itemView.findViewById(R.id.account_item_text_view_title);
-            accountItemTextViewDescription = itemView.findViewById(R.id.account_item_text_view_description);
+            accountItemTextViewUsername = itemView.findViewById(R.id.account_item_text_view_username);
+            accountItemTextViewEmail = itemView.findViewById(R.id.account_item_text_view_email);
+            accountItemTextViewAddress = itemView.findViewById(R.id.account_item_text_view_address);
+            accountItemCircleImageViewImage = itemView.findViewById(R.id.account_item_circle_image_view_image);
+            accountItemCardViewMainContainer.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.account_item_card_view_main_container)
+                onAccountAdapterClickListeners.onAccountItemCardViewMainContainerClickListener(
+                        getItem(getAdapterPosition()),
+                        getAdapterPosition());
         }
         //endregion
     }
     //endregion
+
+
 }

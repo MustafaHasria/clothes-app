@@ -14,6 +14,8 @@ import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentDashboardBinding;
 import com.example.clothes_app.view.account.AccountFragment;
 
+import java.util.Locale;
+
 public class DashboardFragment extends Fragment {
 
     //region Variables
@@ -34,12 +36,14 @@ public class DashboardFragment extends Fragment {
             AccountFragment accountFragment = new AccountFragment();
 
             FragmentTransaction fragmentTransaction =
-                    requireActivity().getSupportFragmentManager().beginTransaction();
+                    getActivity().getSupportFragmentManager().beginTransaction();
 
-            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                    .add(R.id.activity_main_linear_layout_main_container, accountFragment, FRAGMENT_ACCOUNT)
+            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
+                    .add(R.id.activity_main_frame_layout_main_container, accountFragment, FRAGMENT_ACCOUNT)
+                    .addToBackStack("DASHBOARD_FRAGMENT")
                     .commit();
         });
+        Locale[] locales = Locale.getAvailableLocales();
         return binding.getRoot();
     }
 }

@@ -19,8 +19,8 @@ public class Account {
     @ColumnInfo(name = "password")
     private String password;
 
-    @ColumnInfo(name = "picture")
-    private String picture;
+    @ColumnInfo(name = "picture", typeAffinity = ColumnInfo.BLOB)
+    private byte[] picture;
 
     @ColumnInfo(name = "email")
     private String email;
@@ -40,7 +40,7 @@ public class Account {
 
     //region Constructor
 
-    public Account(String username, String password, String picture, String email, String mobile, String country, boolean gender, int idAccountType) {
+    public Account(String username, String password, byte[] picture, String email, String mobile, String country, boolean gender, int idAccountType) {
         this.username = username;
         this.password = password;
         this.picture = picture;
@@ -104,11 +104,11 @@ public class Account {
         this.mobile = mobile;
     }
 
-    public String getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 

@@ -135,7 +135,7 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
             accountDao.insert(new Account(
                     "admin_boss",
                     "adminboss",
-                    "",
+                    null,
                     "hello i am mustafa",
                     "",
                     "",

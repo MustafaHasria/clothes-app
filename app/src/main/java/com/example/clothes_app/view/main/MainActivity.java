@@ -12,6 +12,7 @@ import com.example.clothes_app.view.dashboard.DashboardFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    //region Life cycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,16 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction();
 
         fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-                .replace(R.id.activity_main_linear_layout_main_container, dashboardFragment, FRAGMENT_DASHBOARD)
+                .replace(R.id.activity_main_frame_layout_main_container, dashboardFragment, FRAGMENT_DASHBOARD)
                 .commit();
     }
+    //endregion
+
+    //region Request permission
+
+
+
+
+    //endregion
+
 }
