@@ -40,8 +40,8 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                     && oldItem.getUsername().equals(newItem.getUsername());
         }
     };
-    //endregion
     OnAccountAdapterClickListeners onAccountAdapterClickListeners;
+    //endregion
 
     //region Constructor
     public AccountAdapter(List<Account> accountList, OnAccountAdapterClickListeners onAccountAdapterClickListeners) {
@@ -78,11 +78,14 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
     //region Click listeners
     public interface OnAccountAdapterClickListeners {
         void onAccountItemCardViewMainContainerClickListener(Account account, int position);
+
+        void onLongAccountItemCardViewMainContainerClickListener(Account account, int position);
     }
     //endregion
 
     //region ViewHolder
-    public class AccountViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class AccountViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnLongClickListener {
 
         //region Components
         LinearLayout accountItemCardViewMainContainer;
@@ -101,6 +104,8 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
             accountItemTextViewAddress = itemView.findViewById(R.id.account_item_text_view_address);
             accountItemCircleImageViewImage = itemView.findViewById(R.id.account_item_circle_image_view_image);
             accountItemCardViewMainContainer.setOnClickListener(this);
+            accountItemCardViewMainContainer.setOnLongClickListener(this);
+            accountItemCircleImageViewImage.setOnLongClickListener(this);
         }
 
         @Override
@@ -109,6 +114,15 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                 onAccountAdapterClickListeners.onAccountItemCardViewMainContainerClickListener(
                         getItem(getAdapterPosition()),
                         getAdapterPosition());
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            if (view.getId() == R.id.account_item_card_view_main_container)
+                onAccountAdapterClickListeners.onLongAccountItemCardViewMainContainerClickListener(
+                        getItem(getAdapterPosition())
+                        , getAdapterPosition());
+            return false;
         }
         //endregion
     }

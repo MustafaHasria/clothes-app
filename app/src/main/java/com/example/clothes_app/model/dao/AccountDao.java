@@ -26,4 +26,8 @@ public interface AccountDao {
     @Query("Select * from account_table order by username")
     LiveData<List<Account>> getAllAccounts();
 
+    @Query("Select * from account_table where username = :username and password = :password")
+    List<Account> getAllAccounts(String username, String password);
+
+
 }

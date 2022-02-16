@@ -11,13 +11,13 @@ import com.example.clothes_app.repository.AccountRepository;
 
 import java.util.List;
 
-public class AddAccountViewModel extends AndroidViewModel {
+public class AddAndEditAccountViewModel extends AndroidViewModel {
     //region Variables
     AccountRepository accountRepository;
     //endregion
 
     //region Constructor
-    public AddAccountViewModel(@NonNull Application application) {
+    public AddAndEditAccountViewModel(@NonNull Application application) {
         super(application);
         accountRepository = new AccountRepository(application);
     }
