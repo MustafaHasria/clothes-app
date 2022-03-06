@@ -48,13 +48,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
             app:startIconDrawable="@drawable/ic_person"
             app:startIconTint="@color/primary_color">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_login_text_input_edit_text_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Username"
                 android:background="@color/white"
                 android:textSize="15dp" />
 
@@ -69,6 +70,7 @@
             app:startIconTint="@color/primary_color">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_login_text_input_layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"

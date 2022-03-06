@@ -28,8 +28,8 @@ public class Account {
     @ColumnInfo(name = "mobile")
     private String mobile;
 
-    @ColumnInfo(name = "country")
-    private String country;
+    @ColumnInfo(name = "address")
+    private String address;
 
     @ColumnInfo(name = "gender")
     private boolean gender;
@@ -40,13 +40,13 @@ public class Account {
 
     //region Constructor
 
-    public Account(String username, String password, byte[] picture, String email, String mobile, String country, boolean gender, int idAccountType) {
+    public Account(String username, String password, byte[] picture, String email, String mobile, String address, boolean gender, int idAccountType) {
         this.username = username;
         this.password = password;
         this.picture = picture;
         this.email = email;
         this.mobile = mobile;
-        this.country = country;
+        this.address = address;
         this.gender = gender;
         this.idAccountType = idAccountType;
     }
@@ -112,12 +112,12 @@ public class Account {
         this.picture = picture;
     }
 
-    public String getCountry() {
-        return country;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setAddress(String country) {
+        this.address = country;
     }
 
     public boolean isGender() {

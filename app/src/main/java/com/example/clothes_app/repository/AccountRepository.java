@@ -34,17 +34,22 @@ public class AccountRepository {
         new UpdateAccountTask(accountDao).execute(account);
     }
 
-    public void delete(Account account){
+    public void delete(Account account) {
         new DeleteAccountTask(accountDao).execute(account);
     }
 
-    public LiveData<List<Account>> getAllAccounts(){
+    public LiveData<List<Account>> getAllAccounts() {
         return accountDao.getAllAccounts();
     }
+
+    public List<Account> getUserAccount(String username, String password) {
+        return accountDao.getUserAccount(username, password);
+    }
+
     //endregion
 
     //region Async tasks
-    private static class InsertAccountTask extends AsyncTask<Account, Void, Void>{
+    private static class InsertAccountTask extends AsyncTask<Account, Void, Void> {
         //region Variables
         AccountDao accountDao;
         //endregion

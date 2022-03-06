@@ -34,7 +34,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
         public boolean areContentsTheSame(@NonNull Account oldItem, @NonNull Account newItem) {
             return oldItem.getEmail().equals(newItem.getEmail()) && oldItem.isGender() == newItem.isGender()
                     && oldItem.getIdAccountType() == newItem.getIdAccountType()
-                    && oldItem.getCountry().equals(newItem.getCountry())
+                    && oldItem.getAddress().equals(newItem.getAddress())
                     && oldItem.getMobile().equals(newItem.getMobile())
                     && oldItem.getPicture() == newItem.getPicture()
                     && oldItem.getUsername().equals(newItem.getUsername());
@@ -64,7 +64,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
 
         holder.accountItemTextViewEmail.setText(currentAccount.getEmail());
         holder.accountItemTextViewUsername.setText(currentAccount.getUsername());
-        holder.accountItemTextViewAddress.setText(currentAccount.getCountry());
+        holder.accountItemTextViewAddress.setText(currentAccount.getAddress());
         if (currentAccount.getPicture() != null)
             holder.accountItemCircleImageViewImage.setImageBitmap(BitmapFactory
                     .decodeByteArray(currentAccount.getPicture(), 0, currentAccount.getPicture().length));
@@ -77,6 +77,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
 
     //region Click listeners
     public interface OnAccountAdapterClickListeners {
+
         void onAccountItemCardViewMainContainerClickListener(Account account, int position);
 
         void onLongAccountItemCardViewMainContainerClickListener(Account account, int position);

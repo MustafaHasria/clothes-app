@@ -29,7 +29,7 @@ public class AddAndEditAccountFragment extends Fragment {
 
     //region Variables
     FragmentAddAndEditAccountBinding binding;
-    String username, password, confirmPassword, email, address, genderString, roleString;
+    String username, password, confirmPassword, email, address, genderString, roleString, mobile;
     int role;
     boolean gender;
     AddAndEditAccountViewModel addAndEditAccountViewModel;
@@ -47,50 +47,73 @@ public class AddAndEditAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //ViewModel
+        addAndEditAccountViewModel = new ViewModelProvider(requireActivity()).get(AddAndEditAccountViewModel.class);
+
+        //binding
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_add_and_edit_account, container, false);
         binding = FragmentAddAndEditAccountBinding.bind(view);
+
         bitmap = null;
         bundle = getArguments();
         checkingBundle();
+
+
+        //---------------Listeners------------
+
+        //Image Button Add Photo
         binding.myAccountImageButtonAddPhoto.setOnClickListener(view1 -> {
             checkPermissions();
         });
-        addAndEditAccountViewModel = new ViewModelProvider(requireActivity()).get(AddAndEditAccountViewModel.class);
 
+        //Image View Back
         binding.fragmentAddAndEditAccountImageViewBack.setOnClickListener(view1 -> {
             requireActivity().onBackPressed();
         });
+
+        //Button Create
         binding.fragmentAddAndEditAccountButtonCreate.setOnClickListener(view1 -> {
+
             password = binding.fragmentAddAndEditAccountEditTextPassword.getText().toString();
             confirmPassword = binding.fragmentAddAndEditAccountEditTextConfirmPassword.getText().toString();
             //TODO don't forget to validate all inputs
             Account account = null;
+
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(getContext(), "The password and confirm password not the same", Toast.LENGTH_SHORT).show();
             } else {
+
                 email = binding.fragmentAddAndEditAccountEditTextEmail.getText().toString();
                 address = binding.fragmentAddAndEditAccountEditTextAddress.getText().toString();
                 username = binding.fragmentAddAndEditAccountEditTextUsername.getText().toString();
+                mobile = binding.fragmentAddAndEditAccountEditTextMobile.getText().toString();
                 int selectedIdGender = binding.fragmentAddAndEditAccountRadioGroupGender.getCheckedRadioButtonId();
-                int selectedIdRole = binding.fragmentAddAndEditAccountRadioGroupGender.getCheckedRadioButtonId();
+                int selectedIdRole = binding.fragmentAddAndEditAccountRadioGroupRole.getCheckedRadioButtonId();
                 genderString = ((RadioButton) container.findViewById(selectedIdGender)).getText().toString();
                 gender = genderString.equals("Male");
                 roleString = ((RadioButton) container.findViewById(selectedIdRole)).getText().toString();
                 if (roleString.equals("Representative"))
                     role = 3;
                 else role = 2;
-                account = new Account(username, password, bitmapToByteArray(bitmap), email, "09",
-                        address, gender, role);
+
+
+                if (validateInputs(selectedIdRole)) {
+                    account = new Account(username, password, bitmapToByteArray(bitmap), email, mobile,
+                            address, gender, role);
+                }
             }
             if (bundle == null && account != null) {
                 addAndEditAccountViewModel.insert(account);
-                binding.fragmentAddAndEditAccountEditTextEmail.setText("");
+                Toast.makeText(getContext(), "One account inserted", Toast.LENGTH_SHORT).show();
+                clearInputs();
+
 
             } else if (account != null) {
                 account.setId(bundle.getInt(AppConst.ID));
                 addAndEditAccountViewModel.update(account);
-                binding.fragmentAddAndEditAccountEditTextEmail.setText("");
+                Toast.makeText(getContext(), "One account updated", Toast.LENGTH_SHORT).show();
+                clearInputs();
             }
         });
         return view;
@@ -118,6 +141,38 @@ public class AddAndEditAccountFragment extends Fragment {
     //endregion
 
     //region Methods
+    private void clearInputs() {
+        binding.fragmentAddAndEditAccountEditTextEmail.setText("");
+        binding.fragmentAddAndEditAccountEditTextAddress.setText("");
+        binding.fragmentAddAndEditAccountEditTextUsername.setText("");
+        binding.fragmentAddAndEditAccountEditTextPassword.setText("");
+        binding.fragmentAddAndEditAccountEditTextConfirmPassword.setText("");
+        binding.fragmentAddAndEditAccountEditTextMobile.setText("");
+        binding.fragmentAddAndEditAccountRadioGroupGender.clearCheck();
+        binding.fragmentAddAndEditAccountRadioGroupRole.clearCheck();
+    }
+
+    private boolean validateInputs(int role) {
+        if (password.isEmpty()) {
+            Toast.makeText(getContext(), "Please insert your password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (confirmPassword.isEmpty()) {
+            Toast.makeText(getContext(), "Please confirm your password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (username.isEmpty()) {
+            Toast.makeText(getContext(), "please insert your username", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (role == 0) {
+            Toast.makeText(getContext(), "please select the role", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     private void checkPermissions() {
         chooseImage();
     }
@@ -136,6 +191,7 @@ public class AddAndEditAccountFragment extends Fragment {
     }
 
     private void checkingBundle() {
+        //we are in update state
         if (bundle != null) {
             binding.fragmentAddAndEditAccountEditTextEmail.setText(bundle.getString(AppConst.EMAIL));
             binding.fragmentAddAndEditAccountEditTextUsername.setText(bundle.getString(AppConst.USERNAME));

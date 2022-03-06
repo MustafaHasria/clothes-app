@@ -50,6 +50,7 @@ public class AccountFragment extends Fragment implements AccountAdapter.OnAccoun
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         binding = FragmentAccountBinding.bind(view);
         setupRecyclerView();
+
         binding.fragmentAccountFloatingActionButtonAdd.setOnClickListener(view1 -> {
             moveToAddAndEditFragment(new AddAndEditAccountFragment());
         });
@@ -86,10 +87,12 @@ public class AccountFragment extends Fragment implements AccountAdapter.OnAccoun
         bundle.putString(USERNAME, account.getUsername());
         bundle.putString(PASSWORD, account.getPassword());
         bundle.putByteArray(PICTURE, account.getPicture());
-        bundle.putString(ADDRESS, account.getCountry());
+        bundle.putString(ADDRESS, account.getAddress());
         bundle.putBoolean(GENDER, account.isGender());
         bundle.putInt(ID, account.getId());
+        //role
         bundle.putInt(ID_ACCOUNT_TYPE, account.getIdAccountType());
+
         AddAndEditAccountFragment addAndEditAccountFragment = new AddAndEditAccountFragment();
         addAndEditAccountFragment.setArguments(bundle);
         moveToAddAndEditFragment(addAndEditAccountFragment);

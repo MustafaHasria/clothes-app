@@ -32,6 +32,7 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         binding = FragmentDashboardBinding.bind(view);
+
         binding.fragmentDashboardCardViewAccount.setOnClickListener(view1 -> {
             AccountFragment accountFragment = new AccountFragment();
 
