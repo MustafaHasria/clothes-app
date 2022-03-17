@@ -1,21 +1,22 @@
 package com.example.clothes_app.view.login;
 
+import static com.example.clothes_app.app.AppConst.USER;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.ActivityLoginBinding;
 import com.example.clothes_app.model.entity.Account;
-import com.example.clothes_app.view.dashboard.DashboardFragment;
+import com.example.clothes_app.view.main.MainActivity;
 
 import java.util.List;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,40 +33,29 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-    }
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
-        //ViewModel
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        //binding
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_login, container, false);
-        binding = ActivityLoginBinding.bind(view);
-
         binding.registrationButtonLoginRegister.setOnClickListener(View -> {
+                    username = binding.activityLoginEditTextUsername.getText().toString();
+                    password = binding.activityLoginEditTextPassword.getText().toString();
 
-                    username = binding.activityLoginTextInputEditTextUsername.getText().toString();
-                    password = binding.activityLoginTextInputLayoutPassword.getText().toString();
-
-
-                    List<Account> listuserAccount = null;
+                    List<Account> listUserAccount = null;
                     if (validateInputs()) {
-                        listuserAccount = loginViewModel.getUserAccount(username, password);
-                        if (listuserAccount.size() != 0) {
-                            DashboardFragment dashboardFragment = new DashboardFragment();
+                        //todo insert synchrony
+//                        listUserAccount = loginViewModel.getUserAccount(username, password);
+                        Paper.book().write(USER, new Account("ss", "ss", null,
+                                "fad", "fasdf", "fads", true, 1));
 
-                            FragmentTransaction fragmentTransaction =
-                                    this.getSupportFragmentManager().beginTransaction();
+//                        if (listUserAccount.size() != 0) {
 
-                            //TODO Complete to go to the DashboardFragment
-                        }
+//                            Intent intent = new Intent(this, MainActivity.class);
+                        startActivity(new Intent(this, MainActivity.class));
+                        finish();
+//                        }
                     }
 
 
@@ -73,20 +63,17 @@ public class LoginActivity extends AppCompatActivity {
 
         );
 
-
-        return view;
-
     }
+
     //endregion
 
     //region Methods
     private boolean validateInputs() {
-        if (password.trim().isEmpty()) {
+        if (password.isEmpty()) {
             Toast.makeText(this, "Please insert your password", Toast.LENGTH_SHORT).show();
             return false;
         }
-
-        if (username.trim().isEmpty()) {
+        if (username.isEmpty()) {
             Toast.makeText(this, "please insert your username", Toast.LENGTH_SHORT).show();
             return false;
         } else {

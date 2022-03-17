@@ -11,10 +11,13 @@ import static com.example.clothes_app.app.AppConst.PASSWORD;
 import static com.example.clothes_app.app.AppConst.PICTURE;
 import static com.example.clothes_app.app.AppConst.USERNAME;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -28,7 +31,7 @@ import com.example.clothes_app.view.account.addaccount.AddAndEditAccountFragment
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountFragment extends Fragment implements AccountAdapter.OnAccountAdapterClickListeners{
+public class AccountFragment extends Fragment implements AccountAdapter.OnAccountAdapterClickListeners {
 
     //region Variables
     AccountAdapter accountAdapter;
@@ -97,11 +100,35 @@ public class AccountFragment extends Fragment implements AccountAdapter.OnAccoun
         addAndEditAccountFragment.setArguments(bundle);
         moveToAddAndEditFragment(addAndEditAccountFragment);
     }
+
+    @Override
+    public void onAccountItemImageButtonDeleteClickListener(Account account, int position) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Are you sure you want delete " + account.getUsername());
+        builder.setCancelable(true);
+        builder.setPositiveButton(
+                "Sure",
+                (dialog, id) -> {
+                    accountViewModel.delete(account);
+                    Toast.makeText(getContext(), "The account " + account.getUsername() + " is deleted", Toast.LENGTH_SHORT).show();
+                });
+        builder.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+
+
+    }
     //endregion
 
     //region Methods
-    private void moveToAddAndEditFragment(AddAndEditAccountFragment addAndEditAccountFragment){
-        requireActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out,android.R.animator.fade_in, android.R.animator.fade_out)
+    private void moveToAddAndEditFragment(AddAndEditAccountFragment addAndEditAccountFragment) {
+        requireActivity().getSupportFragmentManager().beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
                 .add(R.id.activity_main_frame_layout_main_container, addAndEditAccountFragment, FRAGMENT_ADD_AND_EDIT_ACCOUNT)
                 .addToBackStack(FRAGMENT_ACCOUNT)
                 .commit();

@@ -10,5 +10,6 @@
     <color name="primary_color">#FF3700B3</color>
     <color name="grey_500">#9E9E9E</color>
     <color name="grey">#E4E8EC</color>
+    <color name="red">#E83F3F</color>
 
 </resources>

@@ -12,6 +12,7 @@ public class AppConst {
     public static final String ID_ACCOUNT_TYPE = "ID_ACCOUNT_TYPE";
     public static final String GENDER = "GENDER";
     public static final String ID = "ID";
+    public static final String USER = "USER";
 
 
 }

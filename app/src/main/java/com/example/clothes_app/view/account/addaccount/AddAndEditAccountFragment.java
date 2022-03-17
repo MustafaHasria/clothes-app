@@ -83,7 +83,6 @@ public class AddAndEditAccountFragment extends Fragment {
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(getContext(), "The password and confirm password not the same", Toast.LENGTH_SHORT).show();
             } else {
-
                 email = binding.fragmentAddAndEditAccountEditTextEmail.getText().toString();
                 address = binding.fragmentAddAndEditAccountEditTextAddress.getText().toString();
                 username = binding.fragmentAddAndEditAccountEditTextUsername.getText().toString();

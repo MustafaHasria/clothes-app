@@ -142,7 +142,7 @@
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
                         android:hint="@string/mobile"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:maxLines="1"
                         android:nextFocusForward="@+id/fragment_add_and_edit_account_edit_text_password"
                         android:padding="10dp"

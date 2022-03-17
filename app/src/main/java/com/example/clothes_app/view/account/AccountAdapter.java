@@ -4,6 +4,7 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                     && oldItem.getUsername().equals(newItem.getUsername());
         }
     };
+
     OnAccountAdapterClickListeners onAccountAdapterClickListeners;
     //endregion
 
@@ -54,14 +56,15 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
     @Override
     public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.account_item, parent, false);
+                .inflate(R.layout.item_recycler_account, parent, false);
         return new AccountViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
         Account currentAccount = getItem(position);
-
+        if (currentAccount.getUsername().equals("admin_boss"))
+            holder.accountItemImageButtonDelete.setVisibility(View.GONE);
         holder.accountItemTextViewEmail.setText(currentAccount.getEmail());
         holder.accountItemTextViewUsername.setText(currentAccount.getUsername());
         holder.accountItemTextViewAddress.setText(currentAccount.getAddress());
@@ -81,6 +84,8 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
         void onAccountItemCardViewMainContainerClickListener(Account account, int position);
 
         void onLongAccountItemCardViewMainContainerClickListener(Account account, int position);
+
+        void onAccountItemImageButtonDeleteClickListener(Account account, int position);
     }
     //endregion
 
@@ -94,6 +99,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
         TextView accountItemTextViewEmail;
         TextView accountItemTextViewAddress;
         CircleImageView accountItemCircleImageViewImage;
+        ImageButton accountItemImageButtonDelete;
         //endregion
 
         //region Constructor
@@ -104,17 +110,29 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
             accountItemTextViewEmail = itemView.findViewById(R.id.account_item_text_view_email);
             accountItemTextViewAddress = itemView.findViewById(R.id.account_item_text_view_address);
             accountItemCircleImageViewImage = itemView.findViewById(R.id.account_item_circle_image_view_image);
+            accountItemImageButtonDelete = itemView.findViewById(R.id.account_item_image_button_delete);
             accountItemCardViewMainContainer.setOnClickListener(this);
+            accountItemImageButtonDelete.setOnClickListener(this);
             accountItemCardViewMainContainer.setOnLongClickListener(this);
             accountItemCircleImageViewImage.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            if (view.getId() == R.id.account_item_card_view_main_container)
-                onAccountAdapterClickListeners.onAccountItemCardViewMainContainerClickListener(
-                        getItem(getAdapterPosition()),
-                        getAdapterPosition());
+            int position = getAdapterPosition();
+            switch (view.getId()) {
+                case R.id.account_item_card_view_main_container:
+                    onAccountAdapterClickListeners.onAccountItemCardViewMainContainerClickListener(
+                            getItem(position),
+                            position);
+
+                    break;
+                case R.id.account_item_image_button_delete:
+                    onAccountAdapterClickListeners.onAccountItemImageButtonDeleteClickListener(
+                            getItem(position),
+                            position);
+                    break;
+            }
         }
 
         @Override
