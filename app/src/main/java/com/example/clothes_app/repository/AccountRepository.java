@@ -42,7 +42,7 @@ public class AccountRepository {
         return accountDao.getAllAccounts();
     }
 
-    public List<Account> getUserAccount(String username, String password) {
+    public LiveData<List<Account>> getUserAccount(String username, String password) {
         return accountDao.getUserAccount(username, password);
     }
 

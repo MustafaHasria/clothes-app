@@ -1,6 +1,7 @@
 package com.example.clothes_app.view.dashboard;
 
 import static com.example.clothes_app.app.AppConst.FRAGMENT_ACCOUNT;
+import static com.example.clothes_app.app.AppConst.FRAGMENT_PRODUCT_EXTENSION;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentDashboardBinding;
 import com.example.clothes_app.view.account.AccountFragment;
-
-import java.util.Locale;
+import com.example.clothes_app.view.productextensions.ProductExtensionsFragment;
 
 public class DashboardFragment extends Fragment {
 
@@ -44,7 +44,18 @@ public class DashboardFragment extends Fragment {
                     .addToBackStack("DASHBOARD_FRAGMENT")
                     .commit();
         });
-        Locale[] locales = Locale.getAvailableLocales();
+
+        binding.fragmentDashboardCardViewExtensionProduct.setOnClickListener(view1 -> {
+            ProductExtensionsFragment productExtensionsFragment = new ProductExtensionsFragment();
+
+            FragmentTransaction fragmentTransaction =
+                    getActivity().getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
+                    .add(R.id.activity_main_frame_layout_main_container, productExtensionsFragment, FRAGMENT_PRODUCT_EXTENSION)
+                    .addToBackStack("DASHBOARD_FRAGMENT")
+                    .commit();
+        });
         return binding.getRoot();
     }
 }

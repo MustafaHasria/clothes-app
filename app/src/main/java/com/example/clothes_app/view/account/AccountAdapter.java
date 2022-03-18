@@ -127,7 +127,7 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
                             position);
 
                     break;
-                case R.id.account_item_image_button_delete:
+                case R.id.item_recycler_color_image_button_color:
                     onAccountAdapterClickListeners.onAccountItemImageButtonDeleteClickListener(
                             getItem(position),
                             position);
@@ -149,3 +149,4 @@ public class AccountAdapter extends ListAdapter<Account, AccountAdapter.AccountV
 
 
 }
+

@@ -39,7 +39,7 @@ public class LoginViewModel extends AndroidViewModel {
         return accountRepository.getAllAccounts();
     }
 
-    public List<Account> getUserAccount(String username, String password) {
+    public LiveData<List<Account>> getUserAccount(String username, String password) {
         return accountRepository.getUserAccount(username, password);
     }
     //endregion

@@ -12,13 +12,35 @@
         android:id="@+id/fragment_dashboard_card_view_account"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_margin="8dp"
         android:layout_weight="1"
-        app:cardBackgroundColor="@color/grey">
+        app:cardBackgroundColor="@color/primary_color">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/accounts"
-            android:textSize="30sp"/>
+            android:textColor="@color/white"
+            android:textSize="30sp" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fragment_dashboard_card_view_extension_product"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+
+        android:layout_weight="1"
+        app:cardBackgroundColor="@color/red">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/extension_product"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+    </androidx.cardview.widget.CardView>
+
 </LinearLayout>

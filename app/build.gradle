@@ -56,5 +56,10 @@ dependencies {
     //Alert dialog
     implementation 'com.github.f0ris.sweetalert:library:1.6.2'
 
+    //Extended Floating Action Button
+    implementation 'com.google.android.material:material:1.6.0-alpha03'
+
+
+
 
 }

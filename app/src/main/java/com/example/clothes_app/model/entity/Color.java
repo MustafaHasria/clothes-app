@@ -16,13 +16,19 @@ public class Color {
     @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "color")
+    private String color;
+
+
     //endregion
 
     //region Constructor
 
-    public Color(String name) {
+    public Color(String name, String color) {
         this.name = name;
+        this.color = color;
     }
+
 
     //endregion
 
@@ -43,6 +49,14 @@ public class Color {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
 
