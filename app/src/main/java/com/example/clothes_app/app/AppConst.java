@@ -14,6 +14,9 @@ public class AppConst {
     public static final String GENDER = "GENDER";
     public static final String ID = "ID";
     public static final String USER = "USER";
+    public static final String NAME = "NAME";
+    public static final String GENDER_ID = "GENDER_ID";
+    public static final String COLOR = "COLOR";
 
 
 }

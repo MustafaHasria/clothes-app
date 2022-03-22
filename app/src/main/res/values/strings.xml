@@ -4,6 +4,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_account">Add Account</string>
     <string name="edit_account">Edit Account</string>
+    <string name="edit_color">Edit Color</string>
+    <string name="edit_size">Edit Size</string>
+    <string name="edit_gender">Edit Gender</string>
     <string name="create_new_account">Create new account</string>
     <string name="please_full_all_the_information_in_this_section">please full all the information in this section</string>
     <string name="username">Username</string>
@@ -18,4 +21,6 @@
     <string name="login">LOGIN</string>
     <string name="colors">Colors:</string>
     <string name="extension_product">Extension product</string>
+    <string name="color_name">Color name</string>
+    <string name="gender">Gender:</string>
 </resources>
