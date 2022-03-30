@@ -3,6 +3,7 @@ package com.example.clothes_app.view.productextensions;
 import static com.example.clothes_app.app.AppConst.COLOR;
 import static com.example.clothes_app.app.AppConst.GENDER_ID;
 import static com.example.clothes_app.app.AppConst.ID;
+import static com.example.clothes_app.app.AppConst.MADE_OF;
 import static com.example.clothes_app.app.AppConst.NAME;
 
 import android.os.Bundle;
@@ -21,12 +22,15 @@ import com.example.clothes_app.databinding.FragmentProductExtensionsBinding;
 import com.example.clothes_app.model.entity.Color;
 import com.example.clothes_app.model.entity.Gender;
 import com.example.clothes_app.model.entity.Size;
+import com.example.clothes_app.model.entity.Tissue;
 import com.example.clothes_app.view.productextensions.adapter.ColorAdapter;
 import com.example.clothes_app.view.productextensions.adapter.GenderAdapter;
 import com.example.clothes_app.view.productextensions.adapter.SizeAdapter;
+import com.example.clothes_app.view.productextensions.adapter.TissueAdapter;
 import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditColor;
 import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditGender;
 import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditSize;
+import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditTissue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,21 +38,29 @@ import java.util.List;
 
 public class ProductExtensionsFragment extends Fragment implements ColorAdapter.OnColorAdapterClickListeners,
         GenderAdapter.OnGenderAdapterClickListeners,
-SizeAdapter.OnSizeAdapterClickListeners{
+        SizeAdapter.OnSizeAdapterClickListeners,
+        TissueAdapter.OnTissueAdapterClickListeners {
 
     //region Variables
     FragmentProductExtensionsBinding binding;
+
     List<Color> colorList;
     List<Gender> genderList;
     List<Size> sizeList;
+    List<Tissue> tissueList;
+
     ColorAdapter colorAdapter;
     GenderAdapter genderAdapter;
     SizeAdapter sizeAdapter;
+    TissueAdapter tissueAdapter;
+
     ProductExtensionsViewModel productExtensionsViewModel;
+
     Animation rotateOpen;
     Animation rotateClose;
     Animation fromBottom;
     Animation toBottom;
+
     boolean clicked = false;
     //endregion
 
@@ -57,15 +69,20 @@ SizeAdapter.OnSizeAdapterClickListeners{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //binding
         View view = inflater.inflate(R.layout.fragment_product_extensions, container, false);
         binding = FragmentProductExtensionsBinding.bind(view);
+
+        //ViewModel
         productExtensionsViewModel = new ViewModelProvider(requireActivity()).get(ProductExtensionsViewModel.class);
 
+        //animation
         rotateOpen = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_open_anim);
         rotateClose = AnimationUtils.loadAnimation(getContext(), R.anim.rotate_close_anim);
         fromBottom = AnimationUtils.loadAnimation(getContext(), R.anim.from_bottom_anim);
         toBottom = AnimationUtils.loadAnimation(getContext(), R.anim.to_bottom_anim);
 
+        //getAllColors
         productExtensionsViewModel.getAllColors().observe(requireActivity(), colors -> {
             if (colors.size() == 0)
                 binding.fragmentProductExtensionsNoData.noDataLayoutLinearLayoutMainContainer.setVisibility(View.VISIBLE);
@@ -73,16 +90,30 @@ SizeAdapter.OnSizeAdapterClickListeners{
                 binding.fragmentProductExtensionsNoData.noDataLayoutLinearLayoutMainContainer.setVisibility(View.GONE);
             colorAdapter.submitList(colors);
         });
+
+        //getAllGenders
         productExtensionsViewModel.getAllGenders().observe(requireActivity(), genders -> {
             genderAdapter.submitList(genders);
         });
+
+        //getAllSizes
         productExtensionsViewModel.getAllSizes().observe(requireActivity(), sizes -> {
             sizeAdapter.submitList(sizes);
         });
 
+        //getAllTissues
+
+        productExtensionsViewModel.getAllTissues().observe(requireActivity(), tissues -> {
+            tissueAdapter.submitList(tissues);
+        });
+
+        //setup recycler view
         setupColorRecyclerView();
         setupGenderRecyclerView();
         setupSizeRecyclerView();
+        setupTissueRecyclerView();
+
+        // buttons listeners
         binding.fragmentProductExtensionsFloatingActionButtonAdd.setOnClickListener(view1 -> {
             onAddButtonClicked();
         });
@@ -101,6 +132,12 @@ SizeAdapter.OnSizeAdapterClickListeners{
             dialogAddAndEditSize.setTargetFragment(this, 1);
             dialogAddAndEditSize.show(getFragmentManager(), null);
         });
+        binding.fragmentProductExtensionsFloatingActionButtonTissue.setOnClickListener(view1 -> {
+            DialogAddAndEditTissue dialogAddAndEditTissue = new DialogAddAndEditTissue();
+            dialogAddAndEditTissue.setTargetFragment(this, 1);
+            dialogAddAndEditTissue.show(getFragmentManager(), null);
+        });
+
         return view;
     }
     //endregion
@@ -129,6 +166,14 @@ SizeAdapter.OnSizeAdapterClickListeners{
         binding.fragmentProductExtensionsRecyclerViewSizes.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.fragmentProductExtensionsRecyclerViewSizes.setHasFixedSize(true);
         binding.fragmentProductExtensionsRecyclerViewSizes.setAdapter(sizeAdapter);
+    }
+
+    private void setupTissueRecyclerView() {
+        tissueList = new ArrayList<>();
+        tissueAdapter = new TissueAdapter(tissueList, this);
+        binding.fragmentProductExtensionsRecyclerViewTissues.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.fragmentProductExtensionsRecyclerViewTissues.setHasFixedSize(true);
+        binding.fragmentProductExtensionsRecyclerViewTissues.setAdapter(tissueAdapter);
     }
     //endregion
 
@@ -193,6 +238,29 @@ SizeAdapter.OnSizeAdapterClickListeners{
     }
 
     //endregion
+    //region Tissue
+
+    @Override
+    public void onItemRecyclerTissueCardViewMainContainerClickListener(Tissue tissue, int position) {
+        DialogAddAndEditTissue dialogAddAndEditTissue = new DialogAddAndEditTissue();
+        Bundle bundle = new Bundle();
+        bundle.putInt(ID, tissue.getId());
+        bundle.putString(NAME, tissue.getName());
+        bundle.putString(MADE_OF, tissue.getMadeOf());
+        dialogAddAndEditTissue.setArguments(bundle);
+        dialogAddAndEditTissue.setTargetFragment(this, 1);
+        dialogAddAndEditTissue.show(getFragmentManager(), null);
+    }
+
+    @Override
+    public void onItemRecyclerTissueImageViewDelete(Tissue tissue, int position) {
+        productExtensionsViewModel.deleteTissue(tissue);
+    }
+
+
+    //endregion
+
+
     //endregion
 
     //region Methods
@@ -201,16 +269,20 @@ SizeAdapter.OnSizeAdapterClickListeners{
             binding.fragmentProductExtensionsFloatingActionButtonSize.setVisibility(View.VISIBLE);
             binding.fragmentProductExtensionsFloatingActionButtonColor.setVisibility(View.VISIBLE);
             binding.fragmentProductExtensionsFloatingActionButtonGender.setVisibility(View.VISIBLE);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.setVisibility(View.VISIBLE);
             binding.fragmentProductExtensionsFloatingActionButtonSize.setClickable(true);
             binding.fragmentProductExtensionsFloatingActionButtonColor.setClickable(true);
             binding.fragmentProductExtensionsFloatingActionButtonGender.setClickable(true);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.setClickable(true);
         } else {
             binding.fragmentProductExtensionsFloatingActionButtonSize.setVisibility(View.GONE);
             binding.fragmentProductExtensionsFloatingActionButtonColor.setVisibility(View.GONE);
             binding.fragmentProductExtensionsFloatingActionButtonGender.setVisibility(View.GONE);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.setVisibility(View.GONE);
             binding.fragmentProductExtensionsFloatingActionButtonSize.setClickable(false);
             binding.fragmentProductExtensionsFloatingActionButtonColor.setClickable(false);
             binding.fragmentProductExtensionsFloatingActionButtonGender.setClickable(false);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.setClickable(false);
         }
     }
 
@@ -219,11 +291,13 @@ SizeAdapter.OnSizeAdapterClickListeners{
             binding.fragmentProductExtensionsFloatingActionButtonSize.startAnimation(fromBottom);
             binding.fragmentProductExtensionsFloatingActionButtonColor.startAnimation(fromBottom);
             binding.fragmentProductExtensionsFloatingActionButtonGender.startAnimation(fromBottom);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.startAnimation(fromBottom);
             binding.fragmentProductExtensionsFloatingActionButtonAdd.startAnimation(rotateOpen);
         } else {
             binding.fragmentProductExtensionsFloatingActionButtonSize.startAnimation(toBottom);
             binding.fragmentProductExtensionsFloatingActionButtonColor.startAnimation(toBottom);
             binding.fragmentProductExtensionsFloatingActionButtonGender.startAnimation(toBottom);
+            binding.fragmentProductExtensionsFloatingActionButtonTissue.startAnimation(toBottom);
             binding.fragmentProductExtensionsFloatingActionButtonAdd.startAnimation(rotateClose);
         }
     }
@@ -233,8 +307,6 @@ SizeAdapter.OnSizeAdapterClickListeners{
         setAnimation(clicked);
         clicked = !clicked;
     }
-
-
 
     //endregion
 }

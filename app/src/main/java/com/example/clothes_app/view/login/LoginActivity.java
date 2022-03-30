@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.clothes_app.databinding.ActivityLoginBinding;
+import com.example.clothes_app.model.entity.Account;
 import com.example.clothes_app.view.main.MainActivity;
+
+import java.util.List;
 
 import io.paperdb.Paper;
 
@@ -37,20 +40,25 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
+        //login button
         binding.registrationButtonLoginRegister.setOnClickListener(View -> {
                     username = binding.activityLoginEditTextUsername.getText().toString();
                     password = binding.activityLoginEditTextPassword.getText().toString();
 
                     if (validateInputs()) {
-                        loginViewModel.getUserAccount(username, password).observe(this, accountList -> {
-                            if (accountList.size() != 0) {
-                                Paper.book().write(USER, accountList.get(0));
-                                startActivity(new Intent(this, MainActivity.class));
-                                finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "This user does not exist.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+
+
+                        List<Account> listUserAccount = null;
+                        if (validateInputs()) {
+                            loginViewModel.getUserAccount(username, password).observe(this, accountList -> {
+                                if (accountList.size() != 0) {
+                                    Paper.book().write(USER, accountList.get(0));
+                                    startActivity(new Intent(this, MainActivity.class));
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "This user does not exist.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
 //                        AsyncTask.execute(() -> {
 //                            List<Account> listUserAccount = loginViewModel.getUserAccount(username, password);
@@ -65,12 +73,29 @@ public class LoginActivity extends AppCompatActivity {
 //
 //                            }
 //                        });
+                        }
+
+
+                        //  if (validateInputs()) {
+                        //todo insert synchrony
+//                        listUserAccount = loginViewModel.getUserAccount(username, password);
+                        //                       Paper.book().write(USER, new Account("ss", "ss", null,
+//                                "fad", "fasdf", "fads", true, 1));
+
+//                        if (listUserAccount.size() != 0) {
+
+//                            Intent intent = new Intent(this, MainActivity.class);
+                        //                       startActivity(new Intent(this, MainActivity.class));
+                        //                      finish();
+//                        }
+                        //                   }
+
+
                     }
-
-
                 }
 
         );
+        //      );
 
     }
 

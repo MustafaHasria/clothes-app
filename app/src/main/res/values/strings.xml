@@ -19,8 +19,10 @@
     <string name="create">Create</string>
     <string name="save">Save</string>
     <string name="login">LOGIN</string>
-    <string name="colors">Colors:</string>
+    <string name="colors">Color:</string>
     <string name="extension_product">Extension product</string>
     <string name="color_name">Color name</string>
     <string name="gender">Gender:</string>
+    <string name="tissue_name">tissue_name</string>
+    <string name="made_of">made of</string>
 </resources>

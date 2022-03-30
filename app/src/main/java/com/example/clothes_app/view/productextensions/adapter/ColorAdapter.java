@@ -41,10 +41,10 @@ public class ColorAdapter extends ListAdapter<Color, ColorAdapter.ColorViewHolde
     //endregion
 
     //region Constructor
-    public ColorAdapter(List<Color> colorList, OnColorAdapterClickListeners onAccountAdapterClickListeners) {
+    public ColorAdapter(List<Color> colorList, OnColorAdapterClickListeners onColorAdapterClickListeners) {
         super(DIFF_CALLBACK);
         this.colorList = colorList;
-        this.onColorAdapterClickListeners = onAccountAdapterClickListeners;
+        this.onColorAdapterClickListeners = onColorAdapterClickListeners;
     }
 
     @NonNull
@@ -86,11 +86,13 @@ public class ColorAdapter extends ListAdapter<Color, ColorAdapter.ColorViewHolde
         //region Constructor
         public ColorViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            //components
             itemRecyclerColorCardViewMainContainer = itemView.findViewById(R.id.item_recycler_color_card_view_main_container);
             itemRecyclerColorImageButtonColor = itemView.findViewById(R.id.item_recycler_color_image_button_color);
             itemRecyclerColorImageViewDelete = itemView.findViewById(R.id.item_recycler_color_image_view_delete);
             itemRecyclerColorTextViewName = itemView.findViewById(R.id.item_recycler_color_text_view_name);
-
+            //listeners
             itemRecyclerColorCardViewMainContainer.setOnClickListener(this);
             itemRecyclerColorImageViewDelete.setOnClickListener(this);
         }

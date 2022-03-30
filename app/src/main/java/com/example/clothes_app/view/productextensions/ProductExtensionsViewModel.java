@@ -9,9 +9,11 @@ import androidx.lifecycle.LiveData;
 import com.example.clothes_app.model.entity.Color;
 import com.example.clothes_app.model.entity.Gender;
 import com.example.clothes_app.model.entity.Size;
+import com.example.clothes_app.model.entity.Tissue;
 import com.example.clothes_app.repository.ColorRepository;
 import com.example.clothes_app.repository.GenderRepository;
 import com.example.clothes_app.repository.SizeRepository;
+import com.example.clothes_app.repository.TissueRepository;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class ProductExtensionsViewModel extends AndroidViewModel {
     ColorRepository colorRepository;
     GenderRepository genderRepository;
     SizeRepository sizeRepository;
+    TissueRepository tissueRepository;
     //endregion
 
     //region Constructor
@@ -29,10 +32,12 @@ public class ProductExtensionsViewModel extends AndroidViewModel {
         colorRepository = new ColorRepository(application);
         genderRepository = new GenderRepository(application);
         sizeRepository = new SizeRepository(application);
+        tissueRepository = new TissueRepository(application);
     }
     //endregion
 
     //region Methods
+    //region Color
     public void insertColor(Color color) {
         colorRepository.insert(color);
     }
@@ -48,8 +53,9 @@ public class ProductExtensionsViewModel extends AndroidViewModel {
     public LiveData<List<Color>> getAllColors() {
         return colorRepository.getAllColors();
     }
+    //endregion
 
-
+    //region Gender
     public void insertGender(Gender gender) {
         genderRepository.insert(gender);
     }
@@ -65,7 +71,9 @@ public class ProductExtensionsViewModel extends AndroidViewModel {
     public LiveData<List<Gender>> getAllGenders() {
         return genderRepository.getAllGenders();
     }
+    //endregion
 
+    //region Size
     public void insertSize(Size size) {
         sizeRepository.insert(size);
     }
@@ -81,7 +89,26 @@ public class ProductExtensionsViewModel extends AndroidViewModel {
     public LiveData<List<Size>> getAllSizes() {
         return sizeRepository.getAllSizes();
     }
+    //endregion
 
+    //region Tissue
+
+    public void insertTissue(Tissue tissue) {
+        tissueRepository.insert(tissue);
+    }
+
+    public void updateTissue(Tissue tissue) {
+        tissueRepository.update(tissue);
+    }
+
+    public void deleteTissue(Tissue tissue) {
+        tissueRepository.delete(tissue);
+    }
+
+    public LiveData<List<Tissue>> getAllTissues() {
+        return tissueRepository.getAllTissues();
+    }
+    //endregion
 
     //endregion
 }

@@ -22,6 +22,7 @@ public class SplashScreen extends AppCompatActivity {
         Paper.init(this);
 
         Account account = Paper.book().read(USER);
+
         if (account == null)
             intent = new Intent(SplashScreen.this, LoginActivity.class);
         else

@@ -38,6 +38,7 @@ public class DialogAddAndEditColor extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_add_and_edit_color, container, false);
         binding = DialogAddAndEditColorBinding.bind(view);
         productExtensionsViewModel = new ViewModelProvider(requireActivity()).get(ProductExtensionsViewModel.class);
+
         bundle = getArguments();
         if (bundle != null) {
             binding.dialogAddAndEditColorButtonCreate.setText(R.string.save);

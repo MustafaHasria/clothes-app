@@ -75,7 +75,8 @@
                 android:layout_width="match_parent"
 
                 android:layout_height="match_parent"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                tools:listitem="@layout/item_recycler_gender" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,9 +97,11 @@
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_product_extensions_recycler_view_tissues"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                tools:listitem="@layout/item_recycler_tissue" />
 
         </LinearLayout>
 
@@ -123,7 +126,8 @@
                 android:id="@+id/fragment_product_extensions_recycler_view_sizes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="8dp" />
+                android:layout_margin="8dp"
+                tools:listitem="@layout/item_recycler_size" />
         </LinearLayout>
 
 
@@ -179,6 +183,19 @@
         android:src="@drawable/ic_male_female"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/fragment_product_extensions_floating_action_button_color"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fragment_product_extensions_floating_action_button_tissue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="14dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_rose"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/fragment_product_extensions_floating_action_button_gender"
         app:layout_constraintEnd_toEndOf="parent" />
 
 

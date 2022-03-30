@@ -38,10 +38,10 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
     //endregion
 
     //region Constructor
-    public SizeAdapter(List<Size> sizeList, OnSizeAdapterClickListeners onAccountAdapterClickListeners) {
+    public SizeAdapter(List<Size> sizeList, OnSizeAdapterClickListeners onSizeAdapterClickListeners) {
         super(DIFF_CALLBACK);
         this.sizeList = sizeList;
-        this.onSizeAdapterClickListeners = onAccountAdapterClickListeners;
+        this.onSizeAdapterClickListeners = onSizeAdapterClickListeners;
     }
 
     @NonNull
@@ -62,9 +62,9 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
 
     //region Click listeners
     public interface OnSizeAdapterClickListeners {
-        void onItemRecyclerSizeCardViewMainContainerClickListener(Size color, int position);
+        void onItemRecyclerSizeCardViewMainContainerClickListener(Size size, int position);
 
-        void onItemRecyclerSizeImageViewDelete(Size color, int position);
+        void onItemRecyclerSizeImageViewDelete(Size size, int position);
     }
     //endregion
 
@@ -92,13 +92,13 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
 
         @Override
         public void onClick(View view) {
-            Size color = getItem(getAdapterPosition());
+            Size size = getItem(getAdapterPosition());
             switch (view.getId()) {
                 case R.id.item_recycler_size_card_view_main_container:
-                    onSizeAdapterClickListeners.onItemRecyclerSizeCardViewMainContainerClickListener(color, getAdapterPosition());
+                    onSizeAdapterClickListeners.onItemRecyclerSizeCardViewMainContainerClickListener(size, getAdapterPosition());
                     break;
                 case R.id.item_recycler_size_image_view_delete:
-                    onSizeAdapterClickListeners.onItemRecyclerSizeImageViewDelete(color, getAdapterPosition());
+                    onSizeAdapterClickListeners.onItemRecyclerSizeImageViewDelete(size, getAdapterPosition());
                     break;
             }
 
