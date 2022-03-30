@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions.adapter;
+package com.example.clothes_app.view.dashboard.productextensions.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -61,6 +61,7 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
     private static ClothesAppDatabase instance;
 
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
+
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -122,7 +123,6 @@ public abstract class ClothesAppDatabase extends RoomDatabase {
         public PopulateDbAsyncTask(ClothesAppDatabase clothesAppDatabase) {
             accountTypeDao = clothesAppDatabase.accountTypeDao();
             accountDao = clothesAppDatabase.accountDao();
-
         }
 
         @Override

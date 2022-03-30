@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions.dialog;
+package com.example.clothes_app.view.dashboard.productextensions.dialog;
 
 import static com.example.clothes_app.app.AppConst.GENDER_ID;
 import static com.example.clothes_app.app.AppConst.ID;
@@ -20,7 +20,7 @@ import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.DialogAddAndEditSizeBinding;
 import com.example.clothes_app.model.entity.Gender;
 import com.example.clothes_app.model.entity.Size;
-import com.example.clothes_app.view.productextensions.ProductExtensionsViewModel;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsViewModel;
 
 import java.util.List;
 

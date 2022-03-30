@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions.dialog;
+package com.example.clothes_app.view.dashboard.productextensions.dialog;
 
 import static com.example.clothes_app.app.AppConst.ID;
 import static com.example.clothes_app.app.AppConst.NAME;
@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.DialogAddAndEditGenderBinding;
 import com.example.clothes_app.model.entity.Gender;
-import com.example.clothes_app.view.productextensions.ProductExtensionsViewModel;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsViewModel;
 
 public class DialogAddAndEditGender extends DialogFragment {
 

@@ -13,8 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentDashboardBinding;
-import com.example.clothes_app.view.account.AccountFragment;
-import com.example.clothes_app.view.productextensions.ProductExtensionsFragment;
+import com.example.clothes_app.view.dashboard.account.AccountFragment;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsFragment;
 
 public class DashboardFragment extends Fragment {
 

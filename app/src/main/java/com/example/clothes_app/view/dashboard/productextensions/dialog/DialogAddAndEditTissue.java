@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions.dialog;
+package com.example.clothes_app.view.dashboard.productextensions.dialog;
 
 import static com.example.clothes_app.app.AppConst.ID;
 import static com.example.clothes_app.app.AppConst.MADE_OF;
@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.DialogAddAndEditTissueBinding;
 import com.example.clothes_app.model.entity.Tissue;
-import com.example.clothes_app.view.productextensions.ProductExtensionsViewModel;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsViewModel;
 
 public class DialogAddAndEditTissue extends DialogFragment {
     //region Variables

@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions;
+package com.example.clothes_app.view.dashboard.productextensions;
 
 import static com.example.clothes_app.app.AppConst.COLOR;
 import static com.example.clothes_app.app.AppConst.GENDER_ID;
@@ -23,14 +23,14 @@ import com.example.clothes_app.model.entity.Color;
 import com.example.clothes_app.model.entity.Gender;
 import com.example.clothes_app.model.entity.Size;
 import com.example.clothes_app.model.entity.Tissue;
-import com.example.clothes_app.view.productextensions.adapter.ColorAdapter;
-import com.example.clothes_app.view.productextensions.adapter.GenderAdapter;
-import com.example.clothes_app.view.productextensions.adapter.SizeAdapter;
-import com.example.clothes_app.view.productextensions.adapter.TissueAdapter;
-import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditColor;
-import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditGender;
-import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditSize;
-import com.example.clothes_app.view.productextensions.dialog.DialogAddAndEditTissue;
+import com.example.clothes_app.view.dashboard.productextensions.adapter.ColorAdapter;
+import com.example.clothes_app.view.dashboard.productextensions.adapter.GenderAdapter;
+import com.example.clothes_app.view.dashboard.productextensions.adapter.SizeAdapter;
+import com.example.clothes_app.view.dashboard.productextensions.adapter.TissueAdapter;
+import com.example.clothes_app.view.dashboard.productextensions.dialog.DialogAddAndEditColor;
+import com.example.clothes_app.view.dashboard.productextensions.dialog.DialogAddAndEditGender;
+import com.example.clothes_app.view.dashboard.productextensions.dialog.DialogAddAndEditSize;
+import com.example.clothes_app.view.dashboard.productextensions.dialog.DialogAddAndEditTissue;
 
 import java.util.ArrayList;
 import java.util.List;

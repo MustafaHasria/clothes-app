@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.account;
+package com.example.clothes_app.view.dashboard.account;
 
 import static com.example.clothes_app.app.AppConst.ADDRESS;
 import static com.example.clothes_app.app.AppConst.EMAIL;
@@ -26,7 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentAccountBinding;
 import com.example.clothes_app.model.entity.Account;
-import com.example.clothes_app.view.account.addaccount.AddAndEditAccountFragment;
+import com.example.clothes_app.view.dashboard.account.addaccount.AddAndEditAccountFragment;
 
 import java.util.ArrayList;
 import java.util.List;

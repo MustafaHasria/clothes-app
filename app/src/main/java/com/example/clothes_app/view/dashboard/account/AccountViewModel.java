@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.account;
+package com.example.clothes_app.view.dashboard.account;
 
 import android.app.Application;
 

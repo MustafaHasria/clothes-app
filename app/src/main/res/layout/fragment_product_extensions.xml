@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
-    tools:context=".view.productextensions.ProductExtensionsFragment">
+    tools:context=".view.dashboard.productextensions.ProductExtensionsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

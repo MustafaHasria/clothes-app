@@ -6,8 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "category_table")
-public class Category {
+@Entity(tableName = "file")
+public class File {
 
     //region Variables
     @ColumnInfo(name = "id")
@@ -16,26 +16,15 @@ public class Category {
 
     @ColumnInfo(name = "picture", typeAffinity = BLOB)
     private byte[] picture;
-
-    @ColumnInfo(name = "name")
-    private String name;
-
-    @ColumnInfo(name = "id_father")
-    private int idFather;
-
     //endregion
 
     //region Constructor
-
-    public Category(byte[] picture, String name, int idFather) {
+    public File(byte[] picture) {
         this.picture = picture;
-        this.name = name;
-        this.idFather = idFather;
     }
-
     //endregion
 
-    //region Setters & Getters
+    //region Getters & Setters
 
     public int getId() {
         return id;
@@ -53,21 +42,6 @@ public class Category {
         this.picture = picture;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getIdFather() {
-        return idFather;
-    }
-
-    public void setIdFather(int idFather) {
-        this.idFather = idFather;
-    }
-
     //endregion
+
 }

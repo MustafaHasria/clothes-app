@@ -25,4 +25,12 @@
     <string name="gender">Gender:</string>
     <string name="tissue_name">tissue_name</string>
     <string name="made_of">made of</string>
+    <string name="category">Category</string>
+    <string name="products">Products</string>
+    <string name="add_product">Add Product</string>
+    <string name="create_new_product">Create new product</string>
+    <string name="name">Name</string>
+    <string name="price_dollar">Price (dollar)</string>
+    <string name="code">Code</string>
+    <string name="description">Description</string>
 </resources>

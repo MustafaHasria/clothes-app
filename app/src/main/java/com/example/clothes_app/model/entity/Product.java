@@ -42,12 +42,15 @@ public class Product {
     @ColumnInfo(name = "id_category_product")
     private int idCategoryProduct;
 
+    @ColumnInfo(name = "id_product_file")
+    private int idProductFile;
+
     //endregion
 
 
     //region Constructor
 
-    public Product(String name, float priceDollar, String codeQR, boolean isOffered, String description, String typeOfTissue, String collectionSeason, int idColorProduct, int idSizeProduct, int idCategoryProduct) {
+    public Product(String name, float priceDollar, String codeQR, boolean isOffered, String description, String typeOfTissue, String collectionSeason, int idColorProduct, int idSizeProduct, int idCategoryProduct, int idProductFile) {
         this.name = name;
         this.priceDollar = priceDollar;
         this.codeQR = codeQR;
@@ -58,7 +61,9 @@ public class Product {
         this.idColorProduct = idColorProduct;
         this.idSizeProduct = idSizeProduct;
         this.idCategoryProduct = idCategoryProduct;
+        this.idProductFile = idProductFile;
     }
+
 
     //endregion
 
@@ -152,6 +157,13 @@ public class Product {
         this.idCategoryProduct = idCategoryProduct;
     }
 
+    public int getIdProductFile() {
+        return idProductFile;
+    }
+
+    public void setIdProductFile(int idProductFile) {
+        this.idProductFile = idProductFile;
+    }
 
     //endregion
 }

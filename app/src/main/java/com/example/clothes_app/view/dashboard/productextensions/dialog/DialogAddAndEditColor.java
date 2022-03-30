@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions.dialog;
+package com.example.clothes_app.view.dashboard.productextensions.dialog;
 
 import static com.example.clothes_app.app.AppConst.COLOR;
 import static com.example.clothes_app.app.AppConst.ID;
@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.DialogAddAndEditColorBinding;
 import com.example.clothes_app.model.entity.Color;
-import com.example.clothes_app.view.productextensions.ProductExtensionsViewModel;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsViewModel;
 
 public class DialogAddAndEditColor extends DialogFragment {
 

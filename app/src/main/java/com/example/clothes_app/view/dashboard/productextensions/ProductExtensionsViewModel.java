@@ -1,4 +1,4 @@
-package com.example.clothes_app.view.productextensions;
+package com.example.clothes_app.view.dashboard.productextensions;
 
 import android.app.Application;
 
