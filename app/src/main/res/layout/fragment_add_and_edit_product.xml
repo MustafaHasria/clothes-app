@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_color"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/fragment_add_and_edit_account_image_view_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/circular_background"
+                    android:backgroundTint="#FFC107"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/fragment_add_and_edit_account_text_view_appbar_title"
+
+                    style="@style/TitleStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="10dp"
+                    android:text="@string/add_product" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/top_rounded_card"
+                android:backgroundTint="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/fragment_add_and_edit_account_text_view_create_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_product"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/fragment_add_and_edit_account_text_view_create_description_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/please_full_all_the_information_in_this_section" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/fragment_add_and_edit_account_edit_text_username"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/name"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_email"
+                        android:padding="10dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/fragment_add_and_edit_account_edit_text_mobile"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_mobile"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/price_dollar"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:nextFocusForward="@+id/fragment_add_and_edit_account_edit_text_password"
+                        android:padding="10dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/fragment_add_and_edit_account_edit_text_password"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_key"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/code"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_confirm_password"
+                        android:padding="10dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/fragment_add_and_edit_account_edit_text_confirm_password"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_edit_text"
+                        android:drawableStart="@drawable/ic_key"
+                        android:drawablePadding="10dp"
+                        android:drawableTint="@color/grey_500"
+                        android:hint="@string/description"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_address"
+                        android:padding="10dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/grey_500"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <AutoCompleteTextView
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_edit_text"
+                            android:drawableStart="@drawable/ic_key"
+                            android:drawablePadding="10dp"
+                            android:drawableTint="@color/grey_500"
+                            android:hint="@string/code"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_confirm_password"
+                            android:padding="10dp"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/grey_500"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:text="Choose Color"
+                            android:textAllCaps="false"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <Spinner
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Is offered" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

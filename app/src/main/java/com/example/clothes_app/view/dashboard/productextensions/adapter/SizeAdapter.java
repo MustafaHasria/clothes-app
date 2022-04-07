@@ -56,6 +56,7 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
     public void onBindViewHolder(@NonNull SizeAdapter.SizeViewHolder holder, int position) {
         Size currentSize = getItem(position);
         holder.itemRecyclerSizeTextViewName.setText(currentSize.getName());
+        holder.itemRecyclerSizeTextViewGender.setText("Mustafa");
     }
 
     //endregion

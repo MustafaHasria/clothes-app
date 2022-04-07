@@ -1,6 +1,7 @@
 package com.example.clothes_app.view.dashboard;
 
 import static com.example.clothes_app.app.AppConst.FRAGMENT_ACCOUNT;
+import static com.example.clothes_app.app.AppConst.FRAGMENT_PRODUCT;
 import static com.example.clothes_app.app.AppConst.FRAGMENT_PRODUCT_EXTENSION;
 
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentDashboardBinding;
 import com.example.clothes_app.view.dashboard.account.AccountFragment;
 import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsFragment;
+import com.example.clothes_app.view.dashboard.products.ProductFragment;
 
 public class DashboardFragment extends Fragment {
 
@@ -53,6 +55,18 @@ public class DashboardFragment extends Fragment {
 
             fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
                     .add(R.id.activity_main_frame_layout_main_container, productExtensionsFragment, FRAGMENT_PRODUCT_EXTENSION)
+                    .addToBackStack("DASHBOARD_FRAGMENT")
+                    .commit();
+        });
+
+        binding.fragmentDashboardCardViewProducts.setOnClickListener(view1 -> {
+             ProductFragment productFragment = new ProductFragment();
+
+            FragmentTransaction fragmentTransaction =
+                    getActivity().getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out, android.R.animator.fade_in, android.R.animator.fade_out)
+                    .add(R.id.activity_main_frame_layout_main_container, productFragment, FRAGMENT_PRODUCT)
                     .addToBackStack("DASHBOARD_FRAGMENT")
                     .commit();
         });
