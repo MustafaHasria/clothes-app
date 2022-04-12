@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/primary_color">
 
     <ScrollView
@@ -70,6 +71,16 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/please_full_all_the_information_in_this_section" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_recycler_product">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,11 +92,12 @@
                         android:id="@+id/fragment_add_and_edit_account_edit_text_username"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_edit_text"
-                        android:drawableStart="@drawable/ic_person"
+                        android:drawableStart="@drawable/ic_product"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
                         android:hint="@string/name"
@@ -101,11 +113,12 @@
                         android:id="@+id/fragment_add_and_edit_account_edit_text_mobile"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginEnd="4dp"
                         android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_edit_text"
-                        android:drawableStart="@drawable/ic_mobile"
+                        android:drawableStart="@drawable/ic_dollar"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
                         android:hint="@string/price_dollar"
@@ -135,7 +148,7 @@
                         android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_edit_text"
-                        android:drawableStart="@drawable/ic_key"
+                        android:drawableStart="@drawable/ic_qr_code"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
                         android:hint="@string/code"
@@ -155,7 +168,7 @@
                         android:layout_marginBottom="16dp"
                         android:layout_weight="1"
                         android:background="@drawable/border_edit_text"
-                        android:drawableStart="@drawable/ic_key"
+                        android:drawableStart="@drawable/ic_description"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
                         android:hint="@string/description"
@@ -190,11 +203,10 @@
                             android:layout_marginBottom="16dp"
                             android:layout_weight="1"
                             android:background="@drawable/border_edit_text"
-                            android:drawableStart="@drawable/ic_key"
+                            android:drawableStart="@drawable/ic_category"
                             android:drawablePadding="10dp"
                             android:drawableTint="@color/grey_500"
-                            android:hint="@string/code"
-                            android:inputType="textPassword"
+                            android:hint="@string/category"
                             android:maxLines="1"
                             android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_confirm_password"
                             android:padding="10dp"
@@ -213,8 +225,10 @@
                         <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
                             android:layout_marginBottom="16dp"
                             android:text="Choose Color"
+                            android:background="@drawable/circular_background"
                             android:textAllCaps="false"/>
                     </LinearLayout>
 
@@ -259,15 +273,27 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Is offered" />
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Is offered" />
 
                     </LinearLayout>
                 </LinearLayout>
 
 
+                <Button
+                    android:id="@+id/fragment_add_and_edit_account_button_create"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="100dp"
+                    android:background="@drawable/rounded_background"
+                    android:text="@string/create"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
         </LinearLayout>
