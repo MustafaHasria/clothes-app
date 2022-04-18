@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/primary_color">
 
     <ScrollView
@@ -192,16 +192,13 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
+                        android:layout_weight="1">
 
                         <AutoCompleteTextView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="16dp"
-                            android:layout_weight="1"
                             android:background="@drawable/border_edit_text"
                             android:drawableStart="@drawable/ic_category"
                             android:drawablePadding="10dp"
@@ -217,20 +214,17 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
+
+                    <Button
+                        android:id="@+id/fragment_add_and_edit_product_button_select_color"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Choose Color"
-                            android:background="@drawable/circular_background"
-                            android:textAllCaps="false"/>
-                    </LinearLayout>
+                        android:layout_marginStart="4dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circular_background"
+                        android:text="Choose Color"
+                        android:textAllCaps="false" />
 
 
                 </LinearLayout>
@@ -265,6 +259,7 @@
                     <Spinner
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="1" />
 
 
