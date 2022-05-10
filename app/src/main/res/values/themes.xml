@@ -27,4 +27,9 @@
         <item name="android:background">@color/white</item>
     </style>
 
+    <style name="BackgroundRoundedColor">
+        <item name="android:background">@drawable/top_rounded_card</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
 </resources>
