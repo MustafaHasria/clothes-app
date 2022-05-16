@@ -61,6 +61,8 @@ public class AddAndEditImagesAdapter extends RecyclerView.Adapter<AddAndEditImag
         this.fileList.addAll(fileList);
         notifyDataSetChanged();
     }
+
+
     //endregion
 
     //region Click listeners
@@ -88,6 +90,7 @@ public class AddAndEditImagesAdapter extends RecyclerView.Adapter<AddAndEditImag
         @Override
         public void onClick(View view) {
             onAddAndEditImagesAdapterClickListeners.onItemRecyclerImagesProductImageButtonDelete(fileList.get(getAdapterPosition()), getAdapterPosition());
+            refreshData(fileList);
         }
 
         //endregion

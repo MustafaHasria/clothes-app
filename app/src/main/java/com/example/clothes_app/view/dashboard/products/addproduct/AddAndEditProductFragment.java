@@ -102,6 +102,10 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
 
     @Override
     public void onItemRecyclerImagesProductImageButtonDelete(File file, int position) {
+        if (fileList.size() > 0) {
+            fileList.remove(position);
+
+        }
 
     }
     //endregion
