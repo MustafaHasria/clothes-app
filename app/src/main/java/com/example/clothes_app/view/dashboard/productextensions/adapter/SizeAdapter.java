@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clothes_app.R;
 import com.example.clothes_app.model.entity.Size;
+import com.example.clothes_app.view.dashboard.productextensions.ProductExtensionsViewModel;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
     //region Variables
     List<Size> sizeList;
     OnSizeAdapterClickListeners onSizeAdapterClickListeners;
+    ProductExtensionsViewModel productExtensionsViewModel;
     //endregion
 
     //region Constructor
@@ -52,11 +54,13 @@ public class SizeAdapter extends ListAdapter<Size, SizeAdapter.SizeViewHolder> {
         return new SizeAdapter.SizeViewHolder(itemView);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull SizeAdapter.SizeViewHolder holder, int position) {
         Size currentSize = getItem(position);
+
         holder.itemRecyclerSizeTextViewName.setText(currentSize.getName());
-        holder.itemRecyclerSizeTextViewGender.setText("Mustafa");
+        holder.itemRecyclerSizeTextViewGender.setText("");
     }
 
     //endregion

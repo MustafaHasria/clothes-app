@@ -256,11 +256,13 @@
 
 
                     <Spinner
+                        android:id="@+id/fragment_add_and_edit_product_spinner_type_of_tissue"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
 
                     <Spinner
+                        android:id="@+id/fragment_add_and_edit_product_spinner_size"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -276,6 +278,7 @@
 
 
                     <Spinner
+                        android:id="@+id/fragment_add_and_edit_product_spinner_collection_season"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

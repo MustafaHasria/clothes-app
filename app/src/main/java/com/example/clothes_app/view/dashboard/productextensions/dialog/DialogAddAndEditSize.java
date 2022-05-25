@@ -47,6 +47,7 @@ public class DialogAddAndEditSize extends DialogFragment {
         productExtensionsViewModel = new ViewModelProvider(requireActivity()).get(ProductExtensionsViewModel.class);
         productExtensionsViewModel.getAllGenders().observe(requireActivity(), genders -> {
             idGender = genders.get(0).getId();
+
             genderList = genders;
             if (genders != null && getContext()!= null) {
                 adapter =

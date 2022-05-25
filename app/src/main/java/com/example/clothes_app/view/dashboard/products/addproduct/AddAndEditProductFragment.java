@@ -8,27 +8,40 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentAddAndEditProductBinding;
 import com.example.clothes_app.model.entity.File;
+import com.example.clothes_app.model.entity.Size;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddAndEditProductFragment extends Fragment implements AddAndEditImagesAdapter.OnAddAndEditImagesAdapterClickListeners{
+public class AddAndEditProductFragment extends Fragment implements AddAndEditImagesAdapter.OnAddAndEditImagesAdapterClickListeners {
 
     //region Variables
     FragmentAddAndEditProductBinding binding;
+    AddAndEditProductViewModel addAndEditProductViewModel;
     List<File> fileList;
     AddAndEditImagesAdapter addAndEditImagesAdapter;
+    int idSize;
+    List<Size> sizeList;
+    ArrayAdapter adapter, seasonAdapter;
+    String seasonName;
+
+    String[] collectionSeason = {"Spring", "Summer",
+            "Autumn", "Winter"};
+    Bundle bundle;
     //endregion
 
     //region Life cycle
@@ -40,12 +53,63 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         binding = FragmentAddAndEditProductBinding.bind(view);
         fileList = new ArrayList<>();
         setupImagesRecyclerView();
+
+        //spinners
+        addAndEditProductViewModel = new ViewModelProvider(requireActivity()).get(AddAndEditProductViewModel.class);
+        addAndEditProductViewModel.getAllSizes().observe(requireActivity(), sizes -> {
+            idSize = sizes.get(0).getId();
+            sizeList = sizes;
+            //todo " whats wrong???"
+            //
+            if (sizes != null && getContext() != null) {
+                adapter =
+                        new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, sizes);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                binding.fragmentAddAndEditProductSpinnerSize.setAdapter(adapter);
+            }
+
+        });
+
+        seasonAdapter =
+                new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, collectionSeason);
+        seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.fragmentAddAndEditProductSpinnerCollectionSeason.setAdapter(seasonAdapter);
+
+
+        bundle = getArguments();
+        if (bundle != null) {
+
+        }
         binding.fragmentAddAndEditProductButtonSelectColor.setOnClickListener(view1 -> {
 
         });
 
         binding.fragmentAddAndEditProductButtonAddImage.setOnClickListener(view1 -> {
             checkPermissions();
+        });
+
+        binding.fragmentAddAndEditProductSpinnerSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                idSize = sizeList.get(i).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.fragmentAddAndEditProductSpinnerCollectionSeason.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                seasonName = collectionSeason[i];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
         });
         return view;
     }

@@ -21,9 +21,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Red"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/item_recycler_size_image_view_delete"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
