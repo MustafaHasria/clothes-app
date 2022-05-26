@@ -6,6 +6,7 @@ public class AppConst {
     public static final String FRAGMENT_PRODUCT_EXTENSION = "FRAGMENT_PRODUCT_EXTENSION";
     public static final String FRAGMENT_PRODUCT = "FRAGMENT_PRODUCT";
     public static final String FRAGMENT_ADD_AND_EDIT_ACCOUNT = "FRAGMENT_ADD_AND_EDIT_ACCOUNT";
+    public static final String FRAGMENT_ADD_AND_EDIT_PRODUCT = "FRAGMENT_ADD_AND_EDIT_PRODUCT";
     public static final String EMAIL = "EMAIL";
     public static final String USERNAME = "USERNAME";
     public static final String ADDRESS = "ADDRESS";

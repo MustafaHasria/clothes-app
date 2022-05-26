@@ -28,21 +28,24 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
             return true;
         }
     };
-    //region Variables
-    List<Product> productList;
-    ProductAdapter.OnProductAdapterClickListeners onProductAdapterClickListeners;
+
+    OnProductAdapterClickListeners onProductAdapterClickListeners;
     //endregion
 
+    //region Variables
+    List<Product> productList;
+
     //region Constructor
-    public ProductAdapter(List<Product> productList, ProductAdapter.OnProductAdapterClickListeners onProductAdapterClickListeners) {
+    public ProductAdapter(List<Product> productList, OnProductAdapterClickListeners onProductAdapterClickListeners) {
         super(DIFF_CALLBACK);
         this.productList = productList;
         this.onProductAdapterClickListeners = onProductAdapterClickListeners;
     }
+    //endregion
 
     @NonNull
     @Override
-    public ProductAdapter.ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_product, parent, false);
         return new ProductAdapter.ProductViewHolder(itemView);
@@ -51,18 +54,19 @@ public class ProductAdapter extends ListAdapter<Product, ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
 
+        Product currentProduct = getItem(position);
+
 
     }
-
-
-    //endregion
 
     //region Click listeners
     public interface OnProductAdapterClickListeners {
 
-
     }
+
+
     //endregion
+
 
     //region ViewHolder
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,

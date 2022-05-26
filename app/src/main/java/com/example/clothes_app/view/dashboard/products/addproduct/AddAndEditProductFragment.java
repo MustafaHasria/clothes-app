@@ -21,6 +21,7 @@ import com.example.clothes_app.R;
 import com.example.clothes_app.databinding.FragmentAddAndEditProductBinding;
 import com.example.clothes_app.model.entity.File;
 import com.example.clothes_app.model.entity.Size;
+import com.example.clothes_app.model.entity.Tissue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -36,7 +37,10 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
     AddAndEditImagesAdapter addAndEditImagesAdapter;
     int idSize;
     List<Size> sizeList;
-    ArrayAdapter adapter, seasonAdapter;
+    int idTissue;
+    List<Tissue> tissueList;
+
+    ArrayAdapter sizeAdapter, seasonAdapter, tissueAdapter;
     String seasonName;
 
     String[] collectionSeason = {"Spring", "Summer",
@@ -62,10 +66,24 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
             //todo " whats wrong???"
             //
             if (sizes != null && getContext() != null) {
-                adapter =
+                sizeAdapter =
                         new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, sizes);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                binding.fragmentAddAndEditProductSpinnerSize.setAdapter(adapter);
+                sizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                binding.fragmentAddAndEditProductSpinnerSize.setAdapter(sizeAdapter);
+            }
+
+        });
+
+        addAndEditProductViewModel.getAllTissue().observe(requireActivity(), tissues -> {
+            idTissue = tissues.get(0).getId();
+            tissueList = tissues;
+            //todo " whats wrong???"
+            //
+            if (tissues != null && getContext() != null) {
+                tissueAdapter =
+                        new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, tissues);
+                tissueAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                binding.fragmentAddAndEditProductSpinnerTypeOfTissue.setAdapter(tissueAdapter);
             }
 
         });
@@ -103,7 +121,7 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         binding.fragmentAddAndEditProductSpinnerCollectionSeason.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                seasonName = collectionSeason[i];
+                seasonName = binding.fragmentAddAndEditProductSpinnerCollectionSeason.getSelectedItem().toString();
             }
 
             @Override

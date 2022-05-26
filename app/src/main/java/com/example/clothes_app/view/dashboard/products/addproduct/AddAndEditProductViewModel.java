@@ -7,7 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.clothes_app.model.entity.Size;
+import com.example.clothes_app.model.entity.Tissue;
 import com.example.clothes_app.repository.SizeRepository;
+import com.example.clothes_app.repository.TissueRepository;
 
 import java.util.List;
 
@@ -18,6 +20,7 @@ public class AddAndEditProductViewModel extends AndroidViewModel {
 
 
     SizeRepository sizeRepository;
+    TissueRepository tissueRepository;
 
     //endregion
 
@@ -26,6 +29,8 @@ public class AddAndEditProductViewModel extends AndroidViewModel {
 
         super(application);
         sizeRepository = new SizeRepository(application);
+        tissueRepository = new TissueRepository(application);
+
     }
     //endregion
 
@@ -45,6 +50,24 @@ public class AddAndEditProductViewModel extends AndroidViewModel {
 
     public LiveData<List<Size>> getAllSizes() {
         return sizeRepository.getAllSizes();
+    }
+    //endregion
+
+    //region Size
+    public void insertTissue(Tissue tissue) {
+        tissueRepository.insert(tissue);
+    }
+
+    public void updateTissue(Tissue tissue) {
+        tissueRepository.update(tissue);
+    }
+
+    public void deleteTissue(Tissue tissue) {
+        tissueRepository.delete(tissue);
+    }
+
+    public LiveData<List<Tissue>> getAllTissue() {
+        return tissueRepository.getAllTissues();
     }
     //endregion
 
