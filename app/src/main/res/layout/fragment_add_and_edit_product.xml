@@ -158,8 +158,9 @@
                     android:orientation="horizontal"
                     android:weightSum="2">
 
-                    <EditText
-                        android:id="@+id/fragment_add_and_edit_account_edit_text_password"
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/fragment_add_and_edit_product_edit_text_input_layout_qr_code"
                         android:layout_width="0dp"
                         android:layout_height="45dp"
                         android:layout_marginStart="4dp"
@@ -170,14 +171,18 @@
                         android:drawableStart="@drawable/ic_qr_code"
                         android:drawablePadding="10dp"
                         android:drawableTint="@color/grey_500"
-                        android:hint="@string/code"
-                        android:inputType="textPassword"
                         android:maxLines="1"
                         android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_confirm_password"
                         android:padding="10dp"
                         android:textColor="@android:color/black"
                         android:textColorHint="@color/grey_500"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:endIconDrawable="@drawable/ic_qr_code"
+                        app:endIconMode="custom"
+                        app:startIconDrawable="@drawable/ic_qr">
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
 
                     <EditText
                         android:id="@+id/fragment_add_and_edit_account_edit_text_confirm_password"
@@ -214,6 +219,7 @@
                         android:layout_weight="1">
 
                         <AutoCompleteTextView
+                            android:id="@+id/fragment_add_and_edit_product_edit_text_category"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_marginStart="4dp"
@@ -224,7 +230,7 @@
                             android:drawableTint="@color/grey_500"
                             android:hint="@string/category"
                             android:maxLines="1"
-                            android:nextFocusForward="@id/fragment_add_and_edit_account_edit_text_confirm_password"
+                            android:nextFocusForward="@id/fragment_add_and_edit_product_button_select_color"
                             android:padding="10dp"
                             android:textColor="@android:color/black"
                             android:textColorHint="@color/grey_500"

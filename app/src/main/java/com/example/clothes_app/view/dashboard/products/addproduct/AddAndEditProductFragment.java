@@ -1,5 +1,7 @@
 package com.example.clothes_app.view.dashboard.products.addproduct;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,6 +25,8 @@ import com.example.clothes_app.databinding.FragmentAddAndEditProductBinding;
 import com.example.clothes_app.model.entity.File;
 import com.example.clothes_app.model.entity.Size;
 import com.example.clothes_app.model.entity.Tissue;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -63,8 +68,7 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         addAndEditProductViewModel.getAllSizes().observe(requireActivity(), sizes -> {
             idSize = sizes.get(0).getId();
             sizeList = sizes;
-            //todo " whats wrong???"
-            //
+
             if (sizes != null && getContext() != null) {
                 sizeAdapter =
                         new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, sizes);
@@ -77,8 +81,7 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         addAndEditProductViewModel.getAllTissue().observe(requireActivity(), tissues -> {
             idTissue = tissues.get(0).getId();
             tissueList = tissues;
-            //todo " whats wrong???"
-            //
+
             if (tissues != null && getContext() != null) {
                 tissueAdapter =
                         new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, tissues);
@@ -93,6 +96,16 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         seasonAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.fragmentAddAndEditProductSpinnerCollectionSeason.setAdapter(seasonAdapter);
 
+        binding.fragmentAddAndEditProductEditTextInputLayoutQrCode.setEndIconOnClickListener(view1 -> {
+            IntentIntegrator intentIntegrator = new IntentIntegrator(getActivity());
+            intentIntegrator.setPrompt("for flash use volume up key");
+            intentIntegrator.setBeepEnabled(true);
+            intentIntegrator.setOrientationLocked(true);
+            intentIntegrator.setCaptureActivity(Capture.class);
+            //initialize scan
+            intentIntegrator.initiateScan();
+
+        });
 
         bundle = getArguments();
         if (bundle != null) {
@@ -146,6 +159,7 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        startActivityForResult(inte);
         Uri uri = data.getData();
         Bitmap bitmap = null;
         try {
@@ -155,6 +169,29 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         }
         fileList.add(new File(bitmapToByteArray(bitmap)));
         addAndEditImagesAdapter.refreshData(fileList);
+
+
+        //scanner
+        //initialize intent result
+        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        //check condition
+
+        if (intentResult.getContents() != null) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Result");
+            builder.setMessage(intentResult.getContents());
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+
+            builder.show();
+
+        } else {
+            Toast.makeText(getContext(), "you did not scan anything", Toast.LENGTH_SHORT).show();
+        }
     }
     //endregion
 
