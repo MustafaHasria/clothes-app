@@ -1,7 +1,5 @@
 package com.example.clothes_app.view.dashboard.products.addproduct;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,8 +24,8 @@ import com.example.clothes_app.databinding.FragmentAddAndEditProductBinding;
 import com.example.clothes_app.model.entity.File;
 import com.example.clothes_app.model.entity.Size;
 import com.example.clothes_app.model.entity.Tissue;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -51,6 +50,15 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
     String[] collectionSeason = {"Spring", "Summer",
             "Autumn", "Winter"};
     Bundle bundle;
+
+    private final ActivityResultLauncher<ScanOptions> barcodeLauncher = registerForActivityResult(new ScanContract(),
+            result -> {
+                if (result.getContents() == null) {
+                    Toast.makeText(requireActivity(), "Cancelled", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(requireActivity(), "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                }
+            });
     //endregion
 
     //region Life cycle
@@ -97,20 +105,10 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         binding.fragmentAddAndEditProductSpinnerCollectionSeason.setAdapter(seasonAdapter);
 
         binding.fragmentAddAndEditProductEditTextInputLayoutQrCode.setEndIconOnClickListener(view1 -> {
-            IntentIntegrator intentIntegrator = new IntentIntegrator(getActivity());
-            intentIntegrator.setPrompt("for flash use volume up key");
-            intentIntegrator.setBeepEnabled(true);
-            intentIntegrator.setOrientationLocked(true);
-            intentIntegrator.setCaptureActivity(Capture.class);
-            //initialize scan
-            intentIntegrator.initiateScan();
-
+            barcodeLauncher.launch(new ScanOptions());
         });
 
         bundle = getArguments();
-        if (bundle != null) {
-
-        }
         binding.fragmentAddAndEditProductButtonSelectColor.setOnClickListener(view1 -> {
 
         });
@@ -159,7 +157,7 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        startActivityForResult(inte);
+//        startActivityForResult(inte);
         Uri uri = data.getData();
         Bitmap bitmap = null;
         try {
@@ -171,27 +169,6 @@ public class AddAndEditProductFragment extends Fragment implements AddAndEditIma
         addAndEditImagesAdapter.refreshData(fileList);
 
 
-        //scanner
-        //initialize intent result
-        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        //check condition
-
-        if (intentResult.getContents() != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Result");
-            builder.setMessage(intentResult.getContents());
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-
-            builder.show();
-
-        } else {
-            Toast.makeText(getContext(), "you did not scan anything", Toast.LENGTH_SHORT).show();
-        }
     }
     //endregion
 
